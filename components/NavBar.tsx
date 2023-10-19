@@ -1,0 +1,81 @@
+'use client'
+import Image from 'next/image'
+import React, { useEffect, useState } from 'react'
+import { logo } from '@/asset/image/index'
+import Link from 'next/link'
+import { useUser } from '@/lib/context/userContext'
+import { Input } from './ui/input'
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+
+const NavBar = () => {
+  const { user, setUser } : any = useUser();
+  const { data: session } = useSession();
+  const [toggleDropdown, setToggleDropdown] = useState(false);
+  return (
+    <div className='w-screen bg-white h-[70px] flex items-center fixed'>
+      <div className= " flex justify-between  w-full items-center px-6"> 
+        <div className='flex gap-1 m-1 items-center'>
+          <Image src={logo} alt="logo" width={50} height={50} />
+          <p className='font-bold'>Job Magnet</p>
+        </div>
+        <div className='flex items-center justify-center px-10'>
+          <div className='border border-1 flex-grow mx-10 rounded-full   hidden sm:flex justify-start w-full lg:w-[500px] items-center px-2 h-10 '>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <input id="search" type="text" placeholder="Enter Company Name" className="ml-3   border-none w-full h-6 outline-none"  />
+          </div>
+        </div>
+        <div className='flex gap-10 items-center'>
+          <Link href="/profile">
+          <div className='flex  justify-center items-center gap-2 m-1' >
+            {
+              session?.user  && <Image alt="ad" src={session?.user?.image || ""} width={35} height={35} className='rounded-full' />
+            }
+            {
+              !session?.user &&  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            }
+            <p className="text-black" >Profile</p>
+          </div>
+          </Link>
+          <Link href='/'>
+            <div className='flex gap-1 m-1' >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+              <p className="text-black" >Home</p>
+            </div>
+          </Link>
+          {
+           (
+            session?.user ? 
+              <button type="button" onClick={()=>{signOut()}}>
+                <div className='flex gap-1 m-1 '  >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                  </svg>
+                  <p className="text-black" > LogOut </p>
+                </div>
+              </button> : 
+              <>
+              <Link href='/logIn'>
+                <div className='flex gap-1 m-1'>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" className="stroke-current text-black stroke-1.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 12l-3-3m0 0l3-3m-3 3h-9" className="stroke-current text-black stroke-1.5" />
+                  </svg>
+                  <p className="text-black" > LogIn </p>
+                </div>
+              </Link>
+              </>
+            ) 
+          }
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default NavBar
