@@ -28,7 +28,11 @@ const page = (route:any) => {
     fun()
   },[])
   return (
-    <Application data={data} type={"apply"} />
+    <div className='flex justify-center'>
+      <div className='w-3/4 lg:w-full'>
+        <Application data={data} type={"apply"} />
+      </div>
+    </div>
   )
 }
 

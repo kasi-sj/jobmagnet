@@ -14,9 +14,12 @@ export const POST = async(req : any)=>{
         noOfOpening,
         description    
     } : any = await req.json();
+    
     try{
         await connectTodDB();
+        const companyName = await (await User.findOne({email:companyEmail})).companyName;
         const res = await Job.create({
+            companyName,
             companyEmail,
             title,
             location,
@@ -29,6 +32,7 @@ export const POST = async(req : any)=>{
             noOfOpening,
             description
         });
+
         console.log(res);
         const user = await User.findOneAndUpdate({email:companyEmail}, {$push: {posted: res._id}});
         return new Response(JSON.stringify(res));

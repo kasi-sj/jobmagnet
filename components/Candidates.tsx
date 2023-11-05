@@ -21,7 +21,7 @@ export default function page({data , job}:any) {
   console.log(job)
   return (
     <div className="flex flex-col justify-start items-center ">
-        <Card className="w-[1000px] ">
+        <Card className="w-[1000px] my-10">
         <CardHeader>
             <CardTitle>Candidates</CardTitle>
             <CardDescription>

@@ -72,8 +72,8 @@ const page = (route:any) => {
     setSubmitting(false)
   }
   return (
-    <div className='min-h-screen py-[70px] '>
-        <div className='flex  flex-col justify-center items-center m-5 gap-12'>
+    <div className='min-h-screen py-[70px] flex justify-center '>
+        <div className='flex w-3/4 lg:w-full  flex-col justify-center items-center m-5 gap-12'>
             <h1 className='text-4xl '>
                 {title} at {companyName}
             </h1>

@@ -5,21 +5,77 @@ import { Button } from '@/components/ui/button';
 import SearchJob from '@/components/SearchJob';
 import JobListCard from '@/components/JobListCard';
 import { useRouter } from 'next/navigation';
+import { getProviders, signIn, useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 export default function Home() {
+  const {data : session } = useSession();
   const router = useRouter();
-  const onResume = () => {
-    
+  const [providers, setProviders] = useState();
+  
+  useEffect(() => {
+    const getProvidersData = async () => {
+      const providersData : any= await getProviders();
+      setProviders(providersData);
+    }
+    getProvidersData();
+  }, [])
+
+  const onResume = async () => {
+    if(!(session?.user)){
+      if(!providers) return;
+      
+      Object.values(providers).map((provider : any)=>{
+        signIn(provider.id)
+      })
+    }
+    if(session?.user){
+      const email = session?.user?.email;
+      var user : any = await fetch('/api/getUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email}),
+      })
+      user = await user.json();
+      if(user.candidateUserName != '')
+      alert("not yet implemented")
+      else
+      alert("You are not allowed to post job")
+    }
   }
-  const onPostJob = () => {
-    router.push("/jobPost");
+
+  const onPostJob = async () => {
+    if(!(session?.user)){
+      if(!providers) return;
+      
+      Object.values(providers).map((provider : any)=>{
+        signIn(provider.id)
+      })
+    }
+    if(session?.user){
+      const email = session?.user?.email;
+      var user : any = await fetch('/api/getUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email}),
+      })
+      user = await user.json();
+      if(user.candidateUserName == '')
+      router.push("/jobPost");
+      else
+      alert("You are not allowed to post job")
+    }
   }
-  const searchBar = false;
+
   return (
     <main className=" py-[70px] ">
-      {
-        searchBar ?
-        <></> :(
-          <div className='flex flex-col '>
+      
+          <div className='flex items-center justify-center'>
+          <div className='w-3/4 flex flex-col '>
+            
             <div className='w-full  font-semibold flex justify-center from-neutral-500 text-white md:px-10'>
             <p className="text-6xl p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text">Make your Dream Job Come True</p>
             </div>
@@ -59,11 +115,10 @@ export default function Home() {
             <SearchJob />
           </div> */}
           <div className='w-full'>
-            <JobListCard page="home" role=""/>
+            <JobListCard page="home" role="" />
           </div>
           </div>
-        )
-      }
+          </div>
     </main>
   )
 }

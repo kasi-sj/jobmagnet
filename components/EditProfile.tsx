@@ -50,8 +50,10 @@ export default function EditProfile() {
     };
     fun();
   },[session]);
+
   return (
-    <Card>
+    <div className="flex justify-center">
+    <Card className="w-3/4 lg:w-full">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">Edit Your Profile</CardTitle>
         <CardDescription>
@@ -82,5 +84,6 @@ export default function EditProfile() {
         }
       </CardContent>
     </Card>
+    </div>
   )
 }

@@ -46,6 +46,7 @@ const page = () => {
 
   const submit = async () => {
     const obj = {
+
         companyEmail : session?.user?.email,
         title : title,
         location : location,

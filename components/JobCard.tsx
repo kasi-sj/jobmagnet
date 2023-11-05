@@ -25,8 +25,8 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
         router.push(`profile/posted/${data._id}`);
     }
     return (
-        <div className="w-full  lg:w-[500px] flex flex-col items-center justify-center">
-            <Card>
+        <div className=" lg:w-[450px] flex flex-col items-center justify-center">
+            <Card className="w-full">
                 <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-2 space-y-0 h-[225px] w-full">
                     <div className="space-y-1">
                         <div className="w-2/3   items-center mb-4">
@@ -38,8 +38,11 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
                                             {data.applied.status}
                                         </div> : <div className="flex  items-center  text-sm rounded-lg text-yellow-500"> Processing </div>
                                     }
-                                </div> :<div  className="w-full px-3  shadow-none">
-                                    Actively Hiring
+                                </div> :
+                                <div className="flex  items-center  text-sm rounded-lg bg-blue-200">
+                                    <div  className="w-full px-3 text-blue-600 shadow-none">
+                                        Actively Hiring
+                                    </div>
                                 </div>
                                 }                               
                         </div>
@@ -78,7 +81,7 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
                         </div>
                         <button type="button" onClick={FullDetail}>
                             <p className="text-blue-500 cursor-pointer">
-                                {  "View Details"}
+                                { type=="applied"  ?  "View Details" : "View Applications"}
                             </p>
                        </button>
                     </div>

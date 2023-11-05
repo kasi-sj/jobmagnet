@@ -62,7 +62,8 @@ useEffect(() => {
     fun();
 },[])
   return (
-    <div className='min-h-screen py-[70px] '>
+    <div className='min-h-screen py-[70px] flex justify-center '>
+        <div className='w-3/4 lg:w-full '>
         <div className='flex justify-center items-center m-5'>
             <h1 className='text-4xl '>
                 {title} at {companyName}
@@ -245,6 +246,7 @@ useEffect(() => {
                 </div>
             </div>
         </div>
+    </div>
     </div>
   )
 }
