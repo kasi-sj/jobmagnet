@@ -26,7 +26,7 @@ const handler = NextAuth({
                             email : profile.email,
                             name : profile.name.replace(" ","").toLowerCase(),
                             image:profile.picture || "https://res.cloudinary.com/dq7l8216n/image/upload/v1622711879/nextjs-mongodb-cloudinary/placeholder-image.jpg",
-                            type:"google"
+                            type : "",
                         })
                     }
                     return true;

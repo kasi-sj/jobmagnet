@@ -3,23 +3,63 @@ import {Schema , model , models} from 'mongoose';
 const UserSchema = new Schema({
     email:{
         type:String,
-        unique: [true , 'Email already exists!'],
         required : [true , 'Email is required!'],
+        unique: [true , 'Email already exists!'],
     },
     name :{
         type : String,
-        required :[true , 'username is required!'],
-        // match : [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"]
+        required :[true , 'name is required!'],
     },
     image : {
         type :String
     },
-    password : {
+    candidateUserName : {
         type : String,
     },
     type : {
         type : String,
-        required : [true , 'type is required!'],
+    },
+    skills : {
+        type : Array,
+    },
+    address : {
+        type : String,
+    },
+    contact : {
+        type : String,
+    },
+    education : {
+        type : String,
+    },
+    catagory : {
+        type : String,
+    },
+    profession : {
+        type : String,
+    },
+    applied : {
+        type : Array,
+    },
+    posted : {
+        type : Array,
+    },
+    companyName : {
+        type : String,
+    },
+    companyUserName : {
+        type : String,
+    },
+    about : {
+        type : String,
+    },
+    webSite : {
+        type : String,
+    },
+    startDate : {
+        type : Date,
+    },
+    hired : {
+        type : Number,
     }
 });
 

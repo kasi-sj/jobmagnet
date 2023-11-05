@@ -3,14 +3,42 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { logo } from '@/asset/image/index'
 import Link from 'next/link'
-import { useUser } from '@/lib/context/userContext'
 import { Input } from './ui/input'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
+function Providers() {
+  const [providers, setProviders] = useState(null);
+  
+  useEffect(() => {
+    const getProvidersData = async () => {
+      const providersData : any= await getProviders();
+      setProviders(providersData);
+    }
+    getProvidersData();
+  }, [])
+
+  return (
+    <>
+      {providers && 
+      Object.values(providers).map((provider : any)=> (
+        <button type="button" onClick={()=>signIn(provider.id)}>
+            <div className='flex gap-1 m-1'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" className="stroke-current text-black stroke-1.5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 12l-3-3m0 0l3-3m-3 3h-9" className="stroke-current text-black stroke-1.5" />
+              </svg>
+              <p className="text-black" > LogIn </p>
+            </div>
+          </button>
+      ))}
+    </>
+  )
+}
 
 const NavBar = () => {
-  const { user, setUser } : any = useUser();
+  const router = useRouter();
   const { data: session } = useSession();
-  const [toggleDropdown, setToggleDropdown] = useState(false);
   return (
     <div className='w-screen bg-white h-[70px] flex items-center fixed'>
       <div className= " flex justify-between  w-full items-center px-6"> 
@@ -27,19 +55,18 @@ const NavBar = () => {
           </div>
         </div>
         <div className='flex gap-10 items-center'>
-          <Link href="/profile">
+          { session?.user && <Link href="/profile">
           <div className='flex  justify-center items-center gap-2 m-1' >
             {
-              session?.user  && <Image alt="ad" src={session?.user?.image || ""} width={35} height={35} className='rounded-full' />
-            }
-            {
-              !session?.user &&  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+              session?.user?.image  ? <Image alt="ad" src={session?.user?.image || ""} width={35} height={35} className='rounded-full' />
+            
+              :  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             }
             <p className="text-black" >Profile</p>
           </div>
-          </Link>
+          </Link>}
           <Link href='/'>
             <div className='flex gap-1 m-1' >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -50,8 +77,10 @@ const NavBar = () => {
           </Link>
           {
            (
-            session?.user ? 
-              <button type="button" onClick={()=>{signOut()}}>
+            session?.user?.email ? 
+              <button type="button" onClick={(e)=>{
+                signOut();
+                }}>
                 <div className='flex gap-1 m-1 '  >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -59,17 +88,7 @@ const NavBar = () => {
                   <p className="text-black" > LogOut </p>
                 </div>
               </button> : 
-              <>
-              <Link href='/logIn'>
-                <div className='flex gap-1 m-1'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" className="stroke-current text-black stroke-1.5" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 12l-3-3m0 0l3-3m-3 3h-9" className="stroke-current text-black stroke-1.5" />
-                  </svg>
-                  <p className="text-black" > LogIn </p>
-                </div>
-              </Link>
-              </>
+              <Providers />
             ) 
           }
         </div>

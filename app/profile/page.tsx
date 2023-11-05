@@ -2,16 +2,39 @@
 import { logo } from '@/asset/image'
 import JobListCard from '@/components/JobListCard'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 const page = () => {
-  const { data : session } = useSession();
   const router = useRouter()
   const onEdit = () => {
     router.push('/profile/editProfile');
   }
-  console.log(session?.user)
+  const [ role , setRole] = useState(null);
+  const { data: session } = useSession();
+
+  useEffect(()=>{
+    if(!session?.user){
+      router.push('/');
+    }
+    const fun = async () => {
+      const res = await fetch("/api/getUser/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: session?.user?.email,
+        }),
+      });
+      const data = await res.json();
+      if (data && data.type) {
+        console.log(data.type);
+        setRole(data.type);
+      }
+    };
+    fun();
+  },[session])
   return (
     <div className='min-h-screen py-[70px]'>
       <div className='w-full flex flex-col 2xl:flex-row justify-between max-2xl:items-center'>
@@ -32,14 +55,9 @@ const page = () => {
                 </div>
           </div>
         </div>
-        <div>
-          <div className='flex justify-center items-center m-5'>
-              <h1 className='text-4xl font-semibold text-slate-800'>
-                  My Applications
-              </h1>
-          </div>
-          <JobListCard applied='yes'/>
-        </div>
+        {role && <div>
+          <JobListCard page='profile' role={role}/>
+        </div>}
       </div>
     </div>
   )

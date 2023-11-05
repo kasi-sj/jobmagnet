@@ -21,7 +21,7 @@ export default function Home() {
         <></> :(
           <div className='flex flex-col '>
             <div className='w-full  font-semibold flex justify-center from-neutral-500 text-white md:px-10'>
-            <p className="text-6xl text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text">Make your Dream Job Come True</p>
+            <p className="text-6xl p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text">Make your Dream Job Come True</p>
             </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
@@ -55,11 +55,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='w-full flex flex-col items-center gap-2  md:flex-row md:px-20 my-10'>
+          {/* <div className='w-full flex flex-col items-center gap-2  md:flex-row md:px-20 my-10'>
             <SearchJob />
-          </div>
+          </div> */}
           <div className='w-full'>
-            <JobListCard applied='no' />
+            <JobListCard page="home" role=""/>
           </div>
           </div>
         )
