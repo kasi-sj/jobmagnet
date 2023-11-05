@@ -3,7 +3,6 @@ import NavBar from '@/components/NavBar'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { UserProvider } from '@/lib/context/userContext'
 import Footer from '@/components/Footer'
 import Provider from '@/components/Provider'
 
