@@ -63,11 +63,11 @@ const NavBar = () => {
   },[session])
   return (
     <div className='w-full flex flex-col items-center '>
-    <div className=' bg-white h-[70px] w-3/4 max-md:w-screen flex items-center fixed'>
+    <div className=' bg-white h-[90px] w-3/4 max-md:w-screen flex items-center fixed'>
       <div className= " flex justify-between  w-full items-center px-6"> 
         <div className='flex gap-1 m-1 items-center'>
-          <Image src={logo} alt="logo" width={50} height={50} />
-          <p className='font-bold'>Job Magnet</p>
+          <Image src={logo} alt="logo" width={60} height={60} />
+          <p className='pl-5 text-2xl font-bold max-sm:hidden '>Job Magnet</p>
         </div>
         {/* <div className='flex items-center justify-center px-10'>
           <div className='border border-1 flex-grow mx-10 rounded-full   hidden lg:flex justify-start w-full sm:w-[300px] items-center px-2 h-10 '>

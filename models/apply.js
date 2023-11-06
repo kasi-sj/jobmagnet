@@ -30,6 +30,7 @@ const ApplySchema = new Schema({
     }
 });
 
+
 const Apply = models.Apply ||  model("Apply" , ApplySchema);
 
 export default Apply;
