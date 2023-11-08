@@ -2,7 +2,7 @@ import { connectTodDB } from "@/utils/database";
 import Job from "@/models/job";
 import User from "@/models/user";
 
-export const GET = async()=>{
+export const POST = async()=>{
     try{
         await connectTodDB();
         console.log("request came")

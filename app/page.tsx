@@ -19,7 +19,7 @@ export default function Home() {
     }
     const getJobsCount = async () => {
       const res = await fetch('/api/noOfJob', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },

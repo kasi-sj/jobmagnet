@@ -11,7 +11,7 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
         setType('home')
         const res = await fetch('/api/getJob',
             {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
                 },
