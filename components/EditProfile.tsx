@@ -53,18 +53,18 @@ export default function EditProfile() {
 
   return (
     <div className="flex justify-center">
-    <Card className="w-3/4 lg:w-full">
+    <Card className="w-2/4 max-sm:w-full max-sm:m-3">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Edit Your Profile</CardTitle>
+        <CardTitle className=" text-lg sm:text-2xl ">Edit Your Profile</CardTitle>
         <CardDescription>
           Enter your Details to create your profile
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="grid gap-2 p-5">
+        <div className="grid gap-2">
             <Label htmlFor="catagory">Catagory</Label>
             <Select onValueChange={setRole} disabled={already} >
-                <SelectTrigger className="w-full" >
+                <SelectTrigger className="w-full" icon>
                     <SelectValue defaultValue={role} placeholder="Select catagory"  />
                 </SelectTrigger>
                 <SelectContent>
@@ -75,14 +75,14 @@ export default function EditProfile() {
                 </SelectContent>
             </Select>
         </div>
-        {
+      </CardContent>
+      {
           role === "candidate" && 
           <CandidateProfileForm /> 
         }
         { role === 'employer' &&
           <EmployerProfileForm />
         }
-      </CardContent>
     </Card>
     </div>
   )

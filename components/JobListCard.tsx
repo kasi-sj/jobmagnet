@@ -11,7 +11,7 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
         setType('home')
         const res = await fetch('/api/getJob',
             {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
                 },
@@ -77,7 +77,7 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
                     </h1>
                 </div>
                 }
-                <div className="  mx-10 grid grid-cols-2 gap-1 border rounded-lg py-10">
+                <div className=" grid grid-cols-2 gap-5 pt-10">
                     {
                         jobs.map((job:any) => {
                             return(

@@ -5,6 +5,7 @@ import linkedin from './linkedIn.svg';
 import twitter from './twitter.svg';
 import youtube from './youtube.svg';
 import jobimage2 from './jobimage2.jpeg'
+import background from './background.svg'
 export const logo = profile;
 export const jobImage1 = jobimage1;
 export const instagramIcon = instagram;
@@ -12,3 +13,4 @@ export const linkedinIcon = linkedin;
 export const twitterIcon = twitter;
 export const youtubeIcon = youtube;
 export const jobImage2 = jobimage2;
+export const backgroundImg = background;

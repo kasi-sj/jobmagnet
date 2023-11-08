@@ -8,6 +8,10 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
+    fontFamily: {
+    'nova-flat': '"Nova Flat"'
+    },
+    extend: {},
     container: {
       center: true,
       padding: "2rem",

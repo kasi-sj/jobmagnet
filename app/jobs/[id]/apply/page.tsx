@@ -17,6 +17,7 @@ import { set } from 'mongoose'
 const page = (route:any) => {
   const [submitting ,setSubmitting] = React.useState(false);  
   const [title, setTitle] = React.useState('');
+  const [companyLogo , setCompanyLogo] = useState(logo);
   const [companyName, setCompanyName] = React.useState('');
   const router = useRouter();
   const [why , setWhy] = React.useState('');
@@ -38,6 +39,7 @@ const page = (route:any) => {
             });
             const data = await res.json();
             setTitle(data._doc.title || '');
+            setCompanyLogo(data.companyDetails.image || '');
             setCompanyName(data.companyDetails.companyName || '');
         }
     }
@@ -72,12 +74,14 @@ const page = (route:any) => {
     setSubmitting(false)
   }
   return (
-    <div className='min-h-screen py-[70px] flex justify-center '>
-        <div className='flex w-3/4 lg:w-full  flex-col justify-center items-center m-5 gap-12'>
-            <h1 className='text-4xl '>
-                {title} at {companyName}
-            </h1>
-            <Card className='w-3/4'>
+    <div className='min-h-screen py-[90px] flex justify-center '>
+        <div className='flex w-1/2 max-lg:w-full m-2 flex-col justify-center items-center  '>
+            <div className='flex justify-center items-center m-5'>
+                <h1 className='text-4xl '>
+                    {title} at {companyName}
+                </h1>
+            </div>
+            <Card className='w-full'>
                 <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-2 space-y-0 h-[100px] w-full">
                     <div className="space-y-1">
                         <CardTitle>
@@ -88,7 +92,7 @@ const page = (route:any) => {
                     </div>
                     <div className="">
                         <Button variant="secondary" className="px-3 shadow-none">
-                            <Image alt={"company name"} src={logo} width={32} height={32} />
+                            <Image alt={"company name"} src={companyLogo} width={32} height={32} />
                         </Button>
                     </div>
                 </CardHeader>
@@ -117,7 +121,7 @@ const page = (route:any) => {
                             />
                             <label
                                 htmlFor="terms"
-                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="text-sm font-medium line-6 opacity-70 leading-6"
                                 >
                                 I can relocate to the job location
                             </label>
@@ -132,11 +136,11 @@ const page = (route:any) => {
                         <RadioGroup defaultValue={join} onValueChange={(e)=>setJoin(e)}>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Yes" id="r1" />
-                                <Label htmlFor="r1">Yes, I am available to join immediately</Label>
+                                <Label className="text-sm font-medium line-6 opacity-70 leading-6" htmlFor="r1">Yes, I am available to join immediately</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="No" id="r2" />
-                                <Label htmlFor="r2">No (Plese specify your availability)</Label>
+                                <Label className="text-sm font-medium line-6 opacity-70 leading-6" htmlFor="r2">No (Plese specify your availability)</Label>
                             </div>
                         </RadioGroup>
                         { join==='No' && 

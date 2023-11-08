@@ -6,19 +6,19 @@ import { Instagram, TwitterIcon } from 'lucide-react'
 const Footer = () => {
     return (
         <footer className="flex flex-col gap-10 justify-center items-center  bg-gray-600 text-white py-10">
-            <div className="flex justify-between w-full px-10">
+            <div className="flex justify-between w-full px-3 gap-2 sm:px-10">
                 <div >
-                    <h3 className="text-lg font-bold">About us</h3>
+                    <h3 className="sm:text-lg font-bold">About us</h3>
                     <p className="mt-2 text-sm">We're hiring </p>
                     <p className="mt-2 text-sm" >Hire interns for your company</p>
                 </div>
                 <div>
-                    <h3 className="text-lg font-bold">Terms & Conditions</h3>
+                    <h3 className="sm:text-lg font-bold">Terms & Conditions</h3>
                     <p className="mt-2 text-sm">Privacy </p>
                     <p className="mt-2 text-sm" >Contact us</p>
                 </div>
                 <div>
-                    <h3 className="text-lg font-bold">Jobs</h3>
+                    <h3 className="sm:text-lg font-bold">Jobs</h3>
                     <p className="mt-2 text-sm">Jobs by Category </p>
                     <p className="mt-2 text-sm" >Jobs by Locations</p>
                 </div>
@@ -27,13 +27,13 @@ const Footer = () => {
                 <Separator  className="h-[1px]" />
             </div>
             <div className='w-full flex justify-between '>
-                <div className='flex gap-1 ml-10'>
-                    <Image src={linkedinIcon} width={30} height={30} alt='linkedin' /> 
-                    <Image src={instagramIcon} width={30} height={30} alt='linkedin' /> 
-                    <Image src={twitterIcon} width={30} height={30} alt='linkedin' /> 
-                    <Image src={youtubeIcon} width={30} height={30} alt='linkedin' /> 
+                <div className='flex gap-1 ml-3 sm:ml-10'>
+                    <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-5' alt='linkedin' /> 
+                    <Image src={instagramIcon} width={30} height={30}  className='max-sm:w-5' alt='linkedin' /> 
+                    <Image src={twitterIcon} width={30} height={30} className='max-sm:w-5'  alt='linkedin' /> 
+                    <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-5'  alt='linkedin' /> 
                 </div>
-                <div className='mr-10'>
+                <div className='mr-10 max-xs:w-[80px] max-sm:w-[100px]'>
                     © Copyright {new Date().getFullYear()} Job Magnet
                 </div>
             </div>

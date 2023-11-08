@@ -9,11 +9,13 @@ import {Separator} from '@/components/ui/separator'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { getProviders, signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react'
 
 
 const page = (route:any) => {
   const router = useRouter();
-  
+  const {data : session} = useSession();
   const [title , setTitle] = useState("");
   const [location , setLocation] = useState("");
   const [locationDiscription , setLocationDiscription] = useState(""); 
@@ -29,9 +31,35 @@ const page = (route:any) => {
   const [whoCanApply , setWhoCanApply] = useState([]);
   const [numberOfOpening , setNumberOfOpening] = useState("");
   const [about , setAbout] = useState("");
+  const [providers, setProviders] = useState();
   const onApply = () => {
-    const job = id;
-    router.push(`/jobs/${job}/apply`)
+    ApplyJob();
+  }
+  const ApplyJob = async () => {
+    if(!(session?.user)){
+      if(!providers) return;
+      
+      Object.values(providers).map((provider : any)=>{
+        signIn(provider.id)
+      })
+    }
+    if(session?.user){
+      const email = session?.user?.email;
+      var user : any = await fetch('/api/getUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email}),
+      })
+      user = await user.json();
+      if(user.candidateUserName != ''){
+        const job = id;
+        router.push(`/jobs/${job}/apply`)
+      }
+      else
+      alert("You are not allowed to apply job")
+    }
   }
 useEffect(() => {
     const fun = async () => {
@@ -62,7 +90,7 @@ useEffect(() => {
     fun();
 },[])
   return (
-    <div className='min-h-screen py-[70px] flex justify-center '>
+    <div className='min-h-screen py-[90px] flex justify-center '>
         <div className='w-3/4 max-lg:w-full m-2 '>
         <div className='flex justify-center items-center m-5'>
             <h1 className='text-4xl '>

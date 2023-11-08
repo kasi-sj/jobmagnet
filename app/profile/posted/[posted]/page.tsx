@@ -35,7 +35,7 @@ const page = (route:any) => {
     fun();
   },[])
   return (
-    <div className='min-h-screen py-[70px]'>
+    <div className='min-h-screen py-[90px]'>
       <Candidates data={data} job={job} />
     </div>
   )

@@ -5,21 +5,21 @@ const Application = ({data , type}:{data:any , type : string}) => {
 
     return (
         <div className={`w-full  py-[70px] ${type === 'apply' && "min-h-screen"} `}>
-          { type==='apply' && <div className='flex justify-center items-center m-5'>
-                <h1 className='text-4xl font-semibold text-slate-800'>
+          { type==='apply' && <div className='flex justify-center items-center my-10'>
+                <h1 className='text-xl lg:text-4xl font-semibold text-slate-800'>
                     Web Developer on Lavender Company LTD
                 </h1>
             </div>}
             <div className='w-full flex justify-center items-center'>
-              <div className=' w-3/4 flex flex-col'>
+              <div className='w-full lg:w-3/4 flex flex-col'>
                 <div className='bg-blue-100 p-2 rounded-t-lg  flex justify-between'>
-                  <p className='text-xl font-semibold text-slate-600' >Application</p>
+                  <p className='text-xl font-semibold text-slate-600 max-sm:text-sm ' >Application</p>
                   {
-                      data.status === "hired" ? <div className="  flex  items-center  text-sm rounded-lg text-green-500">
+                      data.status === "hired" ? <div className="max-sm:text-xs   flex  items-center  text-sm rounded-lg text-green-500">
                           {data.status}
-                      </div> : data.status === "rejected" ? <div className="  flex  items-center  text-sm rounded-lg text-red-500">
+                      </div> : data.status === "rejected" ? <div className="max-sm:text-xs   flex  items-center  text-sm rounded-lg text-red-500">
                           {data.status}
-                      </div> : <div className="flex  items-center  text-sm rounded-lg text-yellow-500"> Processing </div>
+                      </div> : <div className="max-sm:text-xs flex  items-center  text-sm rounded-lg text-yellow-500"> Processing </div>
                   }
                 </div>
                 <div className='w-full border rounded-b-lg p-2'>

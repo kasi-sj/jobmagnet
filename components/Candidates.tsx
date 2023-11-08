@@ -20,8 +20,8 @@ export default function page({data , job}:any) {
   const {data : session} = useSession();
   console.log(job)
   return (
-    <div className="flex flex-col justify-start items-center ">
-        <Card className="w-[1000px] my-10">
+    <div className="flex flex-col justify-start items-center mx-10">
+        <Card className="w-full lg:w-1/2 my-10">
         <CardHeader>
             <CardTitle>Candidates</CardTitle>
             <CardDescription>
@@ -100,8 +100,8 @@ const CardBox = ( {item , company , job}: any ) => {
               <Image src={item.user.image} alt="avatar" width={40} height={40} />
             </Avatar>
             <div>
-            <p className="text-sm font-medium leading-none">{item.user.candidateUserName}</p>
-            <p className="text-sm text-muted-foreground">{item.user.email}</p>
+            <p className="text-sm font-medium leading-none truncate max-sm:w-20">{item.user.candidateUserName}</p>
+            <p className="text-sm text-muted-foreground truncate max-sm:w-20 ">{item.user.email}</p>
             </div>
         </div>
         {item.application.status === 'processing' && <p className="text-blue-400">

@@ -39,7 +39,7 @@ const page = () => {
     fun();
   },[session])
   return (
-    <div className='min-h-screen py-[70px] flex'>
+    <div className='min-h-screen py-[90px] flex'>
       <div className='w-full flex flex-col justify-between items-center gap-10'>
         <div className=' w-[400px] rounded-md  flex flex-col justify-start items-center mx-10'>
           <div className='flex justify-center items-center m-5'>
@@ -47,14 +47,16 @@ const page = () => {
                 My Profile
               </h1>
           </div>
-          <div className='flex flex-col justify-center items-center gap-7 p-6 rounded-lg'>
+          <div className='flex flex-col sm:flex-row justify-center items-center gap-7 p-6 rounded-lg'>
             
             <Image alt="profile" src={image} width={150} height={150} className='rounded-full'/>
-            <p className='font-medium'> {session?.user?.name }</p>
-            <p className='font-normal text-slate-500'>Software Developer</p>
-            <button type='button' className='bg-blue-300 px-2 py-1 rounded-lg text-white' onClick={onEdit}>
-              Edit Profile
-            </button>
+            <div className='h-full flex flex-col gap-3 sm:justify-evenly items-center '>
+              <p className='font-medium'> {session?.user?.name }</p>
+              <p className='font-normal text-slate-500'>Software Developer</p>
+              <button type='button' className='bg-blue-300 px-2 py-1 rounded-lg text-white' onClick={onEdit}>
+                Edit Profile
+              </button>
+            </div>
           </div>
         </div>
         {role && <div className='w-3/4'>
