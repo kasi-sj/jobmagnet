@@ -21,7 +21,9 @@ const EmployerProfileForm = () => {
   const [about , setAbout] = useState<string>("");
   const [webSite , setWebSite] = useState<string>("");
   const [startDate , setStartDate] = useState<string>("");
+  const [submitting , setSubmitting] = useState<boolean>(false);
   const submit = () => {
+    setSubmitting(true);
     const fun = async () => {
       var imgUrl: string | null = null;
       if (photo) {
@@ -57,6 +59,8 @@ const EmployerProfileForm = () => {
         },
         body: JSON.stringify(obj),
       });
+      router.back();
+      setSubmitting(false);
       console.log(res);
     }
     fun();
@@ -186,7 +190,7 @@ const EmployerProfileForm = () => {
       </CardContent>
       <CardFooter>
         <div className='w-full flex justify-center'>
-            <Button className="py-2 px-4" onClick={submit}>Submit</Button>
+            <Button className="py-2 px-4" onClick={submit} disabled={submitting} >Submit</Button>
         </div>
       </CardFooter>
     </>

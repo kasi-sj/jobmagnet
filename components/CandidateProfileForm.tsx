@@ -25,6 +25,7 @@ const CandidateProfileForm = () => {
   const [skills , setSkills] = useState<string[]>([])
   const { data : session } = useSession();
   const [ photo , setPhoto] = useState<FileList | null>(null as any);
+  const [submitting , setSubmitting] = useState<boolean>(false);
 
   const addSkill = (event : any) => {
     setSkills(prev => [...prev ,skill])
@@ -75,6 +76,7 @@ const CandidateProfileForm = () => {
   },[])
 
   const onSubmit = async () => {
+    setSubmitting(true);
     var imgUrl: string | null = null;
     if (photo) {
       const imageRes = await startUpload(Array.from(photo));
@@ -109,6 +111,7 @@ const CandidateProfileForm = () => {
       },
       body: JSON.stringify(obj),
     });
+    setSubmitting(false); 
     router.back();
     console.log(res);
   }
@@ -224,7 +227,7 @@ const CandidateProfileForm = () => {
       </CardContent>
       <CardFooter>
         <div className='w-full flex justify-center'>
-            <Button className="py-2 px-4" onClick={onSubmit}>Submit</Button>
+            <Button className="py-2 px-4" onClick={onSubmit} disabled={submitting} >Submit</Button>
         </div>
       </CardFooter>
     </>
