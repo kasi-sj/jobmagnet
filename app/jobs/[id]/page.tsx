@@ -203,7 +203,7 @@ useEffect(() => {
                             <Separator/>
                         </div>
                         <CardContent className='w-full flex flex-col gap-10'>
-                            <h2 className='font-semibold'>About Lavender Company LTD</h2>
+                            <h2 className='font-semibold'>About {companyName} Company LTD</h2>
                             <Link href={companyWebsite||"/"} className='flex gap-2'>
                                 <p className='text-blue-500'>
                                     {companyWebsite}
@@ -217,7 +217,7 @@ useEffect(() => {
                             </p>
                             <div className='m-2'>
                                 <div className='rounded-lg border flex flex-col justify-between gap-2 p-2'>
-                                    <h2 className='font-medium mb-5'>About Lavender Company LTD</h2>
+                                    <h2 className='font-medium mb-5'>About {companyName} Company LTD</h2>
                                     <div className='flex  justify-evenly gap-6 flex-col md:flex-row'>
                                         <div className='flex gap-1'>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
