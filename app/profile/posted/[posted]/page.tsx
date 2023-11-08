@@ -3,6 +3,8 @@ import  Candidates  from '@/components/Candidates'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 const page = (route:any) => {
   const [data, setData] : [data : any , setdata : any] = useState([]);
   const [job , setJob] : [job : any , setJob : any] = useState({});
@@ -35,7 +37,7 @@ const page = (route:any) => {
     fun();
   },[])
   return (
-    <div className='min-h-screen py-[90px]'>
+    <div className={'min-h-screen py-[90px] '+inter.className}>
       <Candidates data={data} job={job} />
     </div>
   )

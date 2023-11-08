@@ -5,6 +5,8 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 const page = () => {
   const router = useRouter()
   const onEdit = () => {
@@ -39,9 +41,9 @@ const page = () => {
     fun();
   },[session])
   return (
-    <div className='min-h-screen py-[90px] flex'>
+    <div className={'min-h-screen py-[90px] flex '+inter.className}>
       <div className='w-full flex flex-col justify-between items-center gap-10'>
-        <div className=' w-[400px] rounded-md  flex flex-col justify-start items-center mx-10'>
+        <div className='  rounded-md  flex flex-col justify-start items-center mx-10'>
           <div className='flex justify-center items-center m-5'>
               <h1 className='text-4xl font-semibold text-slate-800'>
                 My Profile

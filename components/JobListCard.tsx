@@ -6,6 +6,10 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
   const [jobs,setJobs] = React.useState([])
   const {data : session} = useSession();
   const [type,setType] = React.useState('' as any);
+  const [pageNo , setPageNO] = React.useState(1);
+  const [next , setNext] = React.useState(true);
+
+
   useEffect(()=>{
     const fun1 = async () => {
         setType('home')
@@ -15,12 +19,15 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
             headers: {
                 'Content-Type': 'application/json'
                 },
+                body : JSON.stringify({pageNo:pageNo})
             }
         )
         const data :any = await res.json();
-        console.log(data)
-        setJobs(data);
+        console.log(data.next)
+        setNext(data.next);
+        setJobs(data.data);
     }
+
     const fun2 = async () => {
         
         const userDetail = await fetch('/api/getUser',
@@ -65,7 +72,7 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
     }else if(page === 'profile'){
         fun2()
     }
-  },[session])
+  },[session,pageNo])
   return (
     <>
         {jobs.length > 0 &&
@@ -87,6 +94,24 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
                             )
                         })
                     }
+                </div>
+                <div className='w-full pt-20 flex flex-row justify-center items-center'>
+                    <div className='flex flex-row gap-5'>
+                        <button type='button' onClick={()=>setPageNO(prev=>prev-1)} className={pageNo==1 ? "opacity-20" : ""} disabled={pageNo==1}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+                            {pageNo}
+                        <button type='button' className={!next ? "opacity-20" : ""} onClick={()=>{
+                            setPageNO(prev=>prev+1)
+                            console.log('hai');
+                            }} disabled={!next}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </>
         }

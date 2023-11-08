@@ -74,12 +74,14 @@ const NavBar = () => {
     <div className='w-full flex flex-col items-center '>
     <div className=' bg-white h-[90px] w-3/4 max-md:w-screen flex items-center fixed'>
       <div className= " flex justify-between  w-full items-center px-6"> 
+        <Link href="/">
         <div className='flex gap-1 m-1 items-center'>
-        <Avatar>
-          <Image src={logo} alt="logo" width={60} height={60} />
-        </Avatar>
+          <Avatar>
+            <Image src={logo} alt="logo" width={60} height={60} />
+          </Avatar>
           <p className='pl-5 text-2xl font-bold max-sm:hidden '>Job Magnet</p>
         </div>
+        </Link>
         {/* <div className='flex items-center justify-center px-10'>
           <div className='border border-1 flex-grow mx-10 rounded-full   hidden lg:flex justify-start w-full sm:w-[300px] items-center px-2 h-10 '>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
@@ -91,9 +93,10 @@ const NavBar = () => {
         <div className='gap-10 items-center hidden sm:flex'>
           { session?.user && <Link href="/profile">
           <div className='flex  justify-center items-center gap-2 m-1' >
-            {
-              image  ? <Image alt="ad" src={image} width={35} height={35} className='rounded-full' />
             
+            {
+              image  ? <Image alt="ad" src={image} width={35} height={35} className='rounded-full cursor-pointer' />
+              
               :  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>

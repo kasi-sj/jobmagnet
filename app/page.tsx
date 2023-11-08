@@ -7,11 +7,16 @@ import JobListCard from '@/components/JobListCard';
 import { useRouter } from 'next/navigation';
 import { getProviders, signIn, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { Inter } from 'next/font/google'
+import { toast, useToast } from "@/components/ui/use-toast"
+const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
+
   const {data : session } = useSession();
   const router = useRouter();
   const [providers, setProviders] = useState();
   const [count , setCount] = useState(0);
+
   useEffect(() => {
     const getProvidersData = async () => {
       const providersData : any= await getProviders();
@@ -51,10 +56,18 @@ export default function Home() {
         body: JSON.stringify({email}),
       })
       user = await user.json();
-      if(user.candidateUserName != '')
-      alert("not yet implemented")
+      if(user.candidateUserName == ''){
+        toast({
+          variant: "destructive",
+          title: "Upload Resume",
+          description: "You are not allowed to upload resume",
+        })
+      }
       else
-      alert("You are not allowed to post job")
+      toast({
+        title: "Upload Resume",
+        description: "not yet implemented",
+      })
     }
   }
 
@@ -79,7 +92,11 @@ export default function Home() {
       if(user.candidateUserName == '')
       router.push("/jobPost");
       else
-      alert("You are not allowed to post job")
+      toast({
+        variant: "destructive",
+        title: "Job Post",
+        description: "You are not allowed to post job (must be an employeer)",
+      })
     }
   }
 
@@ -90,7 +107,7 @@ export default function Home() {
           <div className='w-3/4 flex flex-col '>
             
             <div className='w-full  font-semibold flex justify-center from-neutral-500 text-white md:px-10'>
-            <p className="text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text">Make your Dream Job Come True</p>
+            <p className="text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text"  >Make your Dream Job Come True</p>
             </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
@@ -127,8 +144,8 @@ export default function Home() {
           {/* <div className='w-full flex flex-col items-center gap-2  md:flex-row md:px-20 my-10'>
             <SearchJob />
           </div> */}
-          <div className='w-full'>
-            <JobListCard page="home" role="" />
+          <div className={ inter.className +" w-full"} >
+            <JobListCard  page="home" role="" />
           </div>
           </div>
           </div>

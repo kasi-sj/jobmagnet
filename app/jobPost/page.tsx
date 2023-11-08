@@ -10,6 +10,8 @@ import { Input } from '@/components/ui/input'
 import React, { use, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 
 const page = () => {
   const router = useRouter();
@@ -91,7 +93,7 @@ const page = () => {
   },[session])
 
   return (
-    <div className='min-h-screen py-[70px] '>
+    <div className={'min-h-screen py-[70px] '+inter.className}>
       <div className='flex  flex-col justify-center items-center m-5 gap-12'>
             <h1 className='text-4xl '>
                 Lavender company LTD

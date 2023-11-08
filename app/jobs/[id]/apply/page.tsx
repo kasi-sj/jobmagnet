@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation'
 import { useUploadThing } from '@/lib/hooks/uploadthings'
 import { useSession } from 'next-auth/react'
 import { set } from 'mongoose'
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 
 const page = (route:any) => {
   const [submitting ,setSubmitting] = React.useState(false);  
@@ -74,7 +76,7 @@ const page = (route:any) => {
     setSubmitting(false)
   }
   return (
-    <div className='min-h-screen py-[90px] flex justify-center '>
+    <div className={'min-h-screen py-[90px] flex justify-center '+inter.className}>
         <div className='flex w-1/2 max-lg:w-full m-2 flex-col justify-center items-center  '>
             <div className='flex justify-center items-center m-5'>
                 <h1 className='text-4xl '>

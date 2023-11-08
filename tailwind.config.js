@@ -9,7 +9,8 @@ module.exports = {
 	],
   theme: {
     fontFamily: {
-    'nova-flat': '"Nova Flat"'
+    'nova-flat': '"Nova Flat"',
+    sans: ['var(--my-font)', 'ui-sans-serif', 'system-ui'],
     },
     extend: {},
     container: {
