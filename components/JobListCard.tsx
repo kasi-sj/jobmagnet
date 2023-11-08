@@ -95,7 +95,7 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
                         })
                     }
                 </div>
-                {role !== "" && <div className='w-full pt-20 flex flex-row justify-center items-center'>
+                {role === "" && <div className='w-full pt-20 flex flex-row justify-center items-center'>
                     <div className='flex flex-row gap-5'>
                         <button type='button' onClick={()=>setPageNO(prev=>prev-1)} className={pageNo==1 ? "opacity-20" : ""} disabled={pageNo==1}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
