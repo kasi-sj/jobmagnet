@@ -202,7 +202,7 @@ export default function Home() {
               </div>
               <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2'>
                     Enter The Company
-              </label>
+              </label>  
               <div className='w-1/2 min-w-[250px] max-w-[500px] md:w-full' >
                 <Input placeholder="zoho" className='border' value={company} onChange={e=>setCompany(e.target.value)}/>
               </div>

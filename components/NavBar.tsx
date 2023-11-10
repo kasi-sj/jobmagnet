@@ -76,10 +76,10 @@ const NavBar = () => {
       <div className= " flex justify-between  w-full items-center px-6"> 
         <Link href="/">
         <div className='flex gap-1 m-1 items-center'>
-          <Avatar>
-            <Image src={logo} alt="logo" width={60} height={60} />
-          </Avatar>
-          <p className='pl-5 max-sm:text-lg text-2xl  font-bold '>Job Magnet</p>
+          
+            <Image src={logo} alt="logo" width={65} height={65} />
+          
+          <p className=' max-sm:text-lg text-2xl  font-bold '>Job Magnet</p>
         </div>
         </Link>
         {/* <div className='flex items-center justify-center px-10'>
