@@ -24,17 +24,17 @@ export async function POST(request: NextRequest) {
     }
 
     const pdfBuffer = await (pdfFile as Blob).arrayBuffer();
-    const destinationPath = path.join(process.cwd(), 'public', 'uploads', 'uploaded.pdf');
-    const destinationText = path.join(process.cwd(), 'public', 'uploads', 'example.txt');
-    await fs.writeFile('uploaded.pdf', Buffer.from(pdfBuffer));
+    const destinationPath = path.resolve( 'public', 'uploads', 'uploaded.pdf');
+    const destinationText = path.resolve( 'public', 'uploads', 'example.txt');
+    await fs.writeFile(destinationPath, Buffer.from(pdfBuffer));
 
     var convertapi = new ConvertApi(process.env.PDFTOTEXT||'');
     await convertapi.convert('txt', {
-        File: 'uploaded.pdf',
+        File: destinationPath,
     }, 'pdf').then(async function(result) {
-      await result.saveFiles('example.txt');
+      await result.saveFiles(destinationText);
     });
-    const textContent = await fs.readFile('example.txt', 'utf-8');
+    const textContent = await fs.readFile(destinationText, 'utf-8');
     console.log(textContent);
     const prompt = textContent+"\n"+"This is an Text Content in a resume \n i need \n1.skills(array like [python,java,..]) \n2.address {country:'',state:'',city:''}\n3.contact {name : '' , email : '' , phone : ''}\n4.specialization eg (FullStack) (need all of this only) details \n return me a json stringified version don't add unnessacery data";
     const completion = await openai.completions.create({
