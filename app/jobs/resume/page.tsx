@@ -101,6 +101,7 @@ export default function Home() {
     if (file) {
       try {
         const pdfBuffer = await readFileAsBuffer(file);
+        console.log('PDF file :', file);
         console.log('PDF file read as buffer:', pdfBuffer);
         await uploadPdf(pdfBuffer);
       } catch (error) {
@@ -134,6 +135,7 @@ export default function Home() {
 
   const uploadPdf = async (pdfBuffer : any) => {
     const formData = new FormData();
+    
     formData.append('pdf', new Blob([pdfBuffer]));
     try {
       const response = await fetch('/api/extractText', {
