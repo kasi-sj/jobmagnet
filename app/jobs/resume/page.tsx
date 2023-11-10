@@ -186,30 +186,30 @@ export default function Home() {
           </div>
           
           <div className='w-full flex flex-col items-center gap-2  md:px-20 my-10'>
-              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+              <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
                     Upload Resume
               </label>
-              <div className='w-1/2 flex flex-row max-w-[500px] md:w-full ' >
+              <div className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full ' >
                   
                   <Input id="resume" onChange={readPDF} className='border-dashed ' disabled={spin1} type="file" accept=".pdf,.doc,.docx" />
                   <Spinner className="ml-2" loading={spin1} />
               </div>
-              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+              <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
                     Enter Your Specialization
               </label>
-              <div className='w-1/2 max-w-[500px] md:w-full' >
+              <div className='w-1/2 min-w-[250px] max-w-[500px] md:w-full' >
                 <Input placeholder="eg Full Stack" value={specialization} onChange={e=>setSpecialization(e.target.value)} className='border ' />
               </div>
-              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2'>
+              <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2'>
                     Enter The Company
               </label>
-              <div className='w-1/2 max-w-[500px] md:w-full' >
+              <div className='w-1/2 min-w-[250px] max-w-[500px] md:w-full' >
                 <Input placeholder="zoho" className='border' value={company} onChange={e=>setCompany(e.target.value)}/>
               </div>
-              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+              <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
                     Select Your Roll
               </label>
-              <div className='w-1/2 max-w-[500px] md:w-full' >
+              <div className='w-1/2 min-w-[250px] max-w-[500px] md:w-full' >
                 <div className='w-full '>
                 <Select onValueChange={setType} >
                     <SelectTrigger  className="w-full border">
@@ -226,10 +226,10 @@ export default function Home() {
                 </Select>
                 </div>
               </div>
-              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+              <label className='w-1/2 min-w-[250px] flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
                     Enter Your Skills
               </label>
-            <div className=" w-1/2 max-w-[500px] md:w-full flex flex-row">
+            <div className=" w-1/2 min-w-[250px] max-w-[500px] md:w-full flex flex-row">
               <Input 
               id="skills"
               value={skill}
