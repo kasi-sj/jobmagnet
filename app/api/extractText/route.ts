@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       model: "text-davinci-003",
       prompt: prompt,
       max_tokens: 1000,
-      temperature: 0.2,
+      temperature: 0.1,
     });
     console.log(completion.choices)
     const data = JSON.parse(completion.choices[0].text);

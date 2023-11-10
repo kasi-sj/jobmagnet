@@ -79,7 +79,7 @@ const NavBar = () => {
           <Avatar>
             <Image src={logo} alt="logo" width={60} height={60} />
           </Avatar>
-          <p className='pl-5 text-2xl font-bold max-sm:hidden '>Job Magnet</p>
+          <p className='pl-5 max-sm:text-lg text-2xl  font-bold '>Job Magnet</p>
         </div>
         </Link>
         {/* <div className='flex items-center justify-center px-10'>
