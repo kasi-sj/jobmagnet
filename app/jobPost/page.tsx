@@ -29,6 +29,7 @@ const page = () => {
   const [noOfOpening , setNoOfOpening] = useState<string>("");
   const [ description , setDescription] = useState<string>("");
   const addSkill = (event : any) => {
+    if(skill=="")return;
     setSkills(prev => [...prev ,skill])
     setSkill("");
   }
@@ -38,6 +39,7 @@ const page = () => {
   }
 
   const addCan = (event : any) => {
+    if(can=="")return;
     setCans(prev => [...prev ,can])
     setCan("");
   }
@@ -149,7 +151,7 @@ const page = () => {
                             </svg>
                             Job Location ?
                         </label>
-                        <RadioGroup defaultValue="no" onValueChange={(e)=>setLocation(e)}>
+                        <RadioGroup defaultValue="no" onValueChange={(e:any)=>setLocation(e)}>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="Work From Home" id="r1" />
                                 <Label htmlFor="r1">Work From Home</Label>

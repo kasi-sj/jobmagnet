@@ -20,7 +20,6 @@ export const POST = async(req : any)=>{
         console.log(...applys.map((apply : any) => apply.jobId))
         const emails = jobs.map(job => job.companyEmail);
         console.log(emails)
-        // console.log("hai________")
         const users = await User.find({ email: { $in: emails } });
         const res = jobs.map(job => {
             if(type === "applied"){

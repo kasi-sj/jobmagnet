@@ -64,10 +64,19 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
                             </div>
                         </CardDescription>
                     </div>
-                    <div className="w-full flex justify-end">
+                    <div className="w-full flex flex-col items-end gap-2">
                         <Button variant="secondary" className="sm:px-3 shadow-none">
                             <Image alt={"company name"} src={data.companyDetails.image || logo} width={32} height={32} />
                         </Button>
+                        { data.matchCompany ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                            company matched   
+                        </div> : <></>}
+                        { data.matchSpecialization ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                        Roll matched   
+                        </div> : <></>}
+                        { <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                            {data.matchskills} skills matched   
+                        </div>}
                     </div>
                 </CardHeader>
                 <CardContent>

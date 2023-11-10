@@ -28,6 +28,7 @@ const CandidateProfileForm = () => {
   const [submitting , setSubmitting] = useState<boolean>(false);
 
   const addSkill = (event : any) => {
+    if(skill=="")return;
     setSkills(prev => [...prev ,skill])
     setSkill("");
   }
@@ -176,7 +177,7 @@ const CandidateProfileForm = () => {
         </div>
         <div className="grid gap-2">
             <Label htmlFor="catagory">Catagory</Label>
-            <Select onValueChange={e=>setCatagory(e)}>
+            <Select onValueChange={(e:any)=>setCatagory(e)}>
                 <SelectTrigger className="w-full">
                     <SelectValue defaultValue={catagory} placeholder="Select catagory" />
                 </SelectTrigger>

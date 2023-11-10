@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import { jobImage1, jobImage2 } from '@/asset/image';
 import { Button } from '@/components/ui/button';
-import SearchJob from '@/components/SearchJob';
 import JobListCard from '@/components/JobListCard';
 import { useRouter } from 'next/navigation';
 import { getProviders, signIn, useSession } from 'next-auth/react';
@@ -11,7 +10,7 @@ import { Inter } from 'next/font/google'
 import { toast, useToast } from "@/components/ui/use-toast"
 const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
-
+  const [jobs,setJobs] = useState([])
   const {data : session } = useSession();
   const router = useRouter();
   const [providers, setProviders] = useState();
@@ -39,36 +38,7 @@ export default function Home() {
   }, [])
 
   const onResume = async () => {
-    if(!(session?.user)){
-      if(!providers) return;
-      
-      Object.values(providers).map((provider : any)=>{
-        signIn(provider.id)
-      })
-    }
-    if(session?.user){
-      const email = session?.user?.email;
-      var user : any = await fetch('/api/getUser', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({email}),
-      })
-      user = await user.json();
-      if(user.candidateUserName == ''){
-        toast({
-          variant: "destructive",
-          title: "Upload Resume",
-          description: "You are not allowed to upload resume",
-        })
-      }
-      else
-      toast({
-        title: "Upload Resume",
-        description: "not yet implemented",
-      })
-    }
+    router.push("/jobs/resume");
   }
 
   const onPostJob = async () => {
@@ -145,7 +115,7 @@ export default function Home() {
             <SearchJob />
           </div> */}
           <div className={ inter.className +" w-full"} >
-            <JobListCard  page="home" role="" />
+            <JobListCard jobs={jobs} setJobs={setJobs} page="home" role="" />
           </div>
           </div>
           </div>

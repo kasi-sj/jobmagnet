@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
+      esmExternals : 'loose',
+      externalDir: true,
       appDir: true,
       serverComponentsExternalPackages: ["mongoose"],
     },

@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 const page = () => {
+  const [jobs,setJobs] = React.useState([])
   const router = useRouter()
   const onEdit = () => {
     router.push('/profile/editProfile');
@@ -62,7 +63,7 @@ const page = () => {
           </div>
         </div>
         {role && <div className='w-3/4'>
-          <JobListCard page='profile' role={role}/>
+          <JobListCard jobs={jobs} setJobs={setJobs}  page='profile' role={role}/>
         </div>}
       </div>
     </div>

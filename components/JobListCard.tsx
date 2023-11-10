@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import JobCard from './JobCard'
 import { useSession } from 'next-auth/react';
 
-const JobListCard = ({page , role}:{page:string , role : string}) => {
-  const [jobs,setJobs] = React.useState([])
+const JobListCard = ({page , role , jobs , setJobs}:any) => {
   const {data : session} = useSession();
   const [type,setType] = React.useState('' as any);
   const [pageNo , setPageNO] = React.useState(1);
@@ -71,11 +70,13 @@ const JobListCard = ({page , role}:{page:string , role : string}) => {
         fun1()
     }else if(page === 'profile'){
         fun2()
+    }else{
     }
   },[session,pageNo])
+  console.log(jobs)
   return (
     <>
-        {jobs.length > 0 &&
+        {jobs && jobs.length > 0 &&
             <>
                 { role !== "" && 
                     <div className='flex justify-center items-center m-5'>
