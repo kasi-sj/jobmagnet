@@ -253,7 +253,7 @@ export default function Home() {
               ))}
             </div>
             <div className='w-full items-center justify-center flex flex-row max-w-[500px] md:w-full gap-2'>
-              <Button className='text-white  bg-green-500 hover:bg-green-600 px-4 py-2' onClick={onSubmit}>
+              <Button className={'text-white  bg-green-500 hover:bg-green-600 px-4 py-2' + (spin2?"bg-green-800":"")} disabled={spin2} onClick={onSubmit}>
                   Search Job
               </Button>
               <Spinner className="ml-2" loading={spin2} />
