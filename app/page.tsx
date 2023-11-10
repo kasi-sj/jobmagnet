@@ -92,7 +92,7 @@ export default function Home() {
               </p>
               <div className='w-full flex justify-center'>
                 <Button className='text-white bg-green-500 hover:bg-green-600 w-[200px] sm:w-[300px]' onClick={onResume}>
-                  Upload Your Resume
+                  Search
                 </Button>
               </div>
             </div>
@@ -111,9 +111,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <div className='w-full flex flex-col items-center gap-2  md:flex-row md:px-20 my-10'>
-            <SearchJob />
-          </div> */}
           <div className={ inter.className +" w-full"} >
             <JobListCard jobs={jobs} setJobs={setJobs} page="home" role="" />
           </div>
