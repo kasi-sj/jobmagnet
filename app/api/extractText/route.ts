@@ -50,6 +50,6 @@ export async function POST(request: NextRequest) {
     return new Response(JSON.stringify({data : data}));
   } catch (error) {
     console.error('Error handling PDF file:', error);
-    return new Response(JSON.stringify({data: "notok"}), { status: 300 });
+    return new Response(JSON.stringify({data: error}), { status: 300 });
   }
 }
