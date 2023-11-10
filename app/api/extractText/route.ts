@@ -26,14 +26,25 @@ export async function POST(request: NextRequest) {
     const pdfBuffer = await (pdfFile as Blob).arrayBuffer();
     const destinationPath = path.resolve( 'public', 'uploads', 'uploaded.pdf');
     const destinationText = path.resolve( 'public', 'uploads', 'example.txt');
-    await fs.writeFile(destinationPath, Buffer.from(pdfBuffer));
+    try{
+      await fs.writeFile(destinationPath, Buffer.from(pdfBuffer));
+    }catch(e){
+      return new Response(JSON.stringify({data: "canotwritefile"}), { status: 300 });
+    }
 
     var convertapi = new ConvertApi(process.env.PDFTOTEXT||'');
-    await convertapi.convert('txt', {
-        File: destinationPath,
-    }, 'pdf').then(async function(result) {
-      await result.saveFiles(destinationText);
-    });
+
+    try{
+        await convertapi.convert('txt', {
+          File: destinationPath,
+      }, 'pdf').then(async function(result) {
+        await result.saveFiles(destinationText);
+      });
+    }catch(e){
+      return new Response(JSON.stringify({data: "canotwritetext"}), { status: 300 });
+    }
+
+
     const textContent = await fs.readFile(destinationText, 'utf-8');
     console.log(textContent);
     const prompt = textContent+"\n"+"This is an Text Content in a resume \n i need \n1.skills(array like [python,java,..]) \n2.address {country:'',state:'',city:''}\n3.contact {name : '' , email : '' , phone : ''}\n4.specialization eg (FullStack) (need all of this only) details \n return me a json stringified version don't add unnessacery data";
