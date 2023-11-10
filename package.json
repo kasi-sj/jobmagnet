@@ -36,6 +36,7 @@
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.7",
     "openai": "^4.17.2",
+    "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^4.0.189",
     "react": "^18",
     "react-dom": "^18",
@@ -48,6 +49,8 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.13",
+    "@types/pdf-parse": "^1.1.4",
+    "@types/pdfjs-dist": "^2.10.378",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
