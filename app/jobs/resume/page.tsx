@@ -102,8 +102,6 @@ export default function Home() {
       try {
         const pdfBuffer = await readFileAsBuffer(file);
         console.log('PDF file read as buffer:', pdfBuffer);
-
-        // Send the PDF buffer to the server
         await uploadPdf(pdfBuffer);
       } catch (error) {
         console.error('Error reading or uploading PDF file:', error);
@@ -157,7 +155,8 @@ export default function Home() {
         setSpecialization(data.data.specialization);
         console.log('PDF processed successfully:', );
       } else {
-        console.error('Failed to upload PDF:', response.statusText);
+        const data = await response.json();
+        console.error('Failed to upload PDF:', data);
       }
     } catch (error) {
       console.error('Error uploading PDF:', error);
