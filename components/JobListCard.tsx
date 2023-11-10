@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import JobCard from './JobCard'
 import { useSession } from 'next-auth/react';
+import { set } from 'mongoose';
 
 const JobListCard = ({page , role , jobs , setJobs}:any) => {
   const {data : session} = useSession();
   const [type,setType] = React.useState('' as any);
   const [pageNo , setPageNO] = React.useState(1);
   const [next , setNext] = React.useState(true);
+  const [applied , setApplied] = React.useState<Set<any>>(new Set());
+  const [posted , setPosted] = React.useState<Set<any>>(new Set());
 
 
   useEffect(()=>{
@@ -28,7 +31,6 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
     }
 
     const fun2 = async () => {
-        
         const userDetail = await fetch('/api/getUser',
             {
             method: 'POST',
@@ -39,7 +41,6 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
             }
         )
         const user = await userDetail.json();
-        console.log(user)
         var data = [];
         var type = "";
         if(user && user.candidateUserName === ""){
@@ -52,7 +53,6 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
             return;
         }
         setType(type)
-        console.log(data)
         const res = await fetch('/api/getJobByIds',
             {
             method: 'POST',
@@ -63,14 +63,49 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
             } 
         )
         const response :any = await res.json();
-        console.log(response)
         setJobs(response);
     }
+
+    const fun3 = async () => {
+        if (session?.user?.email === undefined) {
+            return;
+        }
+        const userDetail = await fetch('/api/getUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: session?.user?.email })
+        })
+        const user: any = await userDetail.json();
+        const set1 = new Set();
+        user.posted.forEach((element: any) => {
+            set1.add(element);
+        });
+        setPosted(set1);
+        const res = await fetch('/api/getJobByIds',
+            {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({list : user.applied , type : type})
+            } 
+        )
+        const response :any = await res.json();
+        const set2 = new Set();
+        response.forEach((element: any) => {
+            set2.add(element._id);
+        });
+        setApplied(set2);
+    }
+    fun3()
     if(page === 'home'){
         fun1()
     }else if(page === 'profile'){
         fun2()
     }else{
+        setType('search')
     }
   },[session,pageNo])
   console.log(jobs)
@@ -87,14 +122,18 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
                 }
                 <div className=" grid grid-cols-2 gap-5 pt-10">
                     {
+                        
                         jobs.map((job:any) => {
+                            const post = posted.has(job._id);
+                            const apply = applied.has(job._id);
                             return(
                                 <div className=' col-span-2  lg:col-span-1  rounded-lg flex justify-center'>
-                                    <JobCard data={job} type={type} />
+                                    <JobCard posted={post} applied={apply} data={job} type={type} />
                                 </div>
                             )
                         })
                     }
+                    {console.log(applied)}
                 </div>
                 {role === "" && <div className='w-full pt-20 flex flex-row justify-center items-center'>
                     <div className='flex flex-row gap-5'>

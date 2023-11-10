@@ -91,20 +91,6 @@ export default function Home() {
     fun();
   },[session])
 
-  useEffect(() => {
-    const getJobsCount = async () => {
-      const res = await fetch('/api/noOfJob', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data : any =  await res.json();
-      console.log(data);
-      setCount(data.count);
-    }
-    getJobsCount();
-  }, [])
 
 
   const readPDF = async (event : React.ChangeEvent<HTMLInputElement>) => {
@@ -189,9 +175,6 @@ export default function Home() {
             </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
-              <p className="text-lg sm:text-2xl text-center text-slate-800 pb-1 ">
-                {count}+ Jobs Listed
-              </p>
               <p className='text-2xl sm:text-4xl font-semibold text-center text-slate-600'>
                 Find your Dream Job
               </p>
@@ -199,7 +182,6 @@ export default function Home() {
                 Search, Find and Apply for Jobs directly on website
               </p>
             </div>
-            <Image src={jobImage1} alt="jobImage1" className='rounded-lg  hidden lg:block' width={400} height={300} />
           </div>
           
           <div className='w-full flex flex-col items-center gap-2  md:px-20 my-10'>
@@ -261,7 +243,7 @@ export default function Home() {
             </div>
           </div>
           <div className={ inter.className +" w-full"} >
-            <JobListCard jobs={jobs}  setJobs={setJobs} page="not" role="search" />
+            <JobListCard jobs={jobs}  setJobs={setJobs} page="search" role="search" />
           </div>
           </div>
           </div>

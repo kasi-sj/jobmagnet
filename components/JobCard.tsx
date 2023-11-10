@@ -13,12 +13,19 @@ import { useRouter } from "next/navigation"
 import { Place, Money } from "@/components/SmallComponents"    
 import { useState } from "react"
 
-const JobCard = ({data , type}:{data : any , type : string}) => {
+const JobCard = ({data , type , posted , applied}:{data : any , type : string , posted : boolean , applied : boolean}) => {
     const router = useRouter();
     const FullDetail = () => {
-        const job = data._id;
-        if(type==='home')
-        router.push(`/jobs/${data._id}`);
+        if(type==='home' || type==='search'){
+            if(applied){
+                router.push(`/jobs/${data._id}/applied`);
+            }else if(posted){
+                router.push(`/jobs/${data._id}/posted`);
+            }
+            else{
+                router.push(`/jobs/${data._id}`);
+            }
+        }
         else if(type=='applied')
         router.push(`profile/application/${data.applied._id}`);
         else
@@ -41,7 +48,15 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
                                 </div> :
                                 <div className="flex  items-center  text-sm rounded-lg bg-blue-200">
                                     <div  className="w-full px-3 max-sm:text-xs max-sm:py-2 text-blue-600 shadow-none">
-                                        Actively Hiring
+                                        {applied ?
+                                        <div className="text-orange-600">
+                                         Applied
+                                        </div>
+                                          : posted ? 
+                                          <div className="text-orange-600">
+                                         Posted
+                                        </div>
+                                          : "Actively Hiring"}
                                     </div>
                                 </div>
                                 }                               
@@ -74,9 +89,9 @@ const JobCard = ({data , type}:{data : any , type : string}) => {
                         { data.matchSpecialization ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
                         Roll matched   
                         </div> : <></>}
-                        { <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                        { data.matchskills ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
                             {data.matchskills} skills matched   
-                        </div>}
+                        </div> : <></>}
                     </div>
                 </CardHeader>
                 <CardContent>
