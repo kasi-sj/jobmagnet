@@ -111,15 +111,25 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
   console.log(jobs)
   return (
     <>
+        { role !== "" && 
+            <div className='flex justify-center items-center m-5'>
+            <h1 className='text-4xl font-semibold text-slate-800'>
+                {role=='candidate' ? 'Applied Jobs' :'Posted Jobs'}
+            </h1>
+            </div>
+            
+        }
+        {
+            (page=="profile" && role !== "" && jobs && jobs.length === 0) &&
+            <div className='flex justify-center items-center m-5 h-40 w-full border border-dashed mt-10 border-slate-500  rounded-lg'>
+                <h1 className='text-xl font-semibold text-slate-400'>
+                {role=='candidate' ? 'No Jobs Applied' :'No Jobs Posted'}
+                </h1>
+            </div>
+        }
         {jobs && jobs.length > 0 &&
             <>
-                { role !== "" && 
-                    <div className='flex justify-center items-center m-5'>
-                    <h1 className='text-4xl font-semibold text-slate-800'>
-                        {role=='candidate' ? 'Applied Jobs' :'Posted Jobs'}
-                    </h1>
-                </div>
-                }
+                
                 <div className=" grid grid-cols-2 gap-5 pt-10">
                     {
                         
@@ -135,6 +145,7 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
                     }
                     {console.log(applied)}
                 </div>
+
                 {role === "" && <div className='w-full pt-20 flex flex-row justify-center items-center'>
                     <div className='flex flex-row gap-5'>
                         <button type='button' onClick={()=>setPageNO(prev=>prev-1)} className={pageNo==1 ? "opacity-20" : ""} disabled={pageNo==1}>

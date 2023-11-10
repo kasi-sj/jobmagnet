@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import JobListCard from '@/components/JobListCard';
 import { useEffect, useState } from 'react';
 import { Inter } from 'next/font/google'
-import { Input } from '@/components/ui/input';
+import { Input  } from '@/components/ui/input';
 import { useSession } from 'next-auth/react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Spinner from '@/components/spinner';
@@ -186,41 +186,57 @@ export default function Home() {
           </div>
           
           <div className='w-full flex flex-col items-center gap-2  md:px-20 my-10'>
+              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+                    Upload Resume
+              </label>
               <div className='w-1/2 flex flex-row max-w-[500px] md:w-full ' >
-                <Input id="resume" onChange={readPDF} className='border-dashed ' disabled={spin1} type="file" accept=".pdf,.doc,.docx" />
-                <Spinner className="ml-2" loading={spin1} />
+                  
+                  <Input id="resume" onChange={readPDF} className='border-dashed ' disabled={spin1} type="file" accept=".pdf,.doc,.docx" />
+                  <Spinner className="ml-2" loading={spin1} />
               </div>
-            <div className='w-1/2 max-w-[500px] md:w-full' >
-              <Input placeholder="Enter Roll" value={specialization} onChange={e=>setSpecialization(e.target.value)} className='border ' />
-            </div>
-            <div className='w-1/2 max-w-[500px] md:w-full' >
-              <Input placeholder="Company Name" className='border' value={company} onChange={e=>setCompany(e.target.value)}/>
-            </div>
-            <div className='w-1/2 max-w-[500px] md:w-full' >
-              <div className='w-full '>
-              <Select onValueChange={setType} >
-                  <SelectTrigger  className="w-full border">
-                      <SelectValue defaultValue={type} placeholder={type} />
-                  </SelectTrigger>
-                  <SelectContent >
-                      <SelectGroup>
-                      <SelectLabel>Type</SelectLabel>
-                      <SelectItem value="Intern">Intern</SelectItem>
-                      <SelectItem value="Fresher">Fresher</SelectItem>
-                      <SelectItem value="Experienced">Experienced</SelectItem>
-                      </SelectGroup>
-                  </SelectContent>
-              </Select>
+              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+                    Enter Your Specialization
+              </label>
+              <div className='w-1/2 max-w-[500px] md:w-full' >
+                <Input placeholder="eg Full Stack" value={specialization} onChange={e=>setSpecialization(e.target.value)} className='border ' />
               </div>
-            </div>
-            <div className=" w-full max-w-[500px] flex gap-2">
+              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2'>
+                    Enter The Company
+              </label>
+              <div className='w-1/2 max-w-[500px] md:w-full' >
+                <Input placeholder="zoho" className='border' value={company} onChange={e=>setCompany(e.target.value)}/>
+              </div>
+              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+                    Select Your Roll
+              </label>
+              <div className='w-1/2 max-w-[500px] md:w-full' >
+                <div className='w-full '>
+                <Select onValueChange={setType} >
+                    <SelectTrigger  className="w-full border">
+                        <SelectValue defaultValue={type} placeholder={type} />
+                    </SelectTrigger>
+                    <SelectContent >
+                        <SelectGroup>
+                        <SelectLabel>Type</SelectLabel>
+                        <SelectItem value="Intern">Intern</SelectItem>
+                        <SelectItem value="Fresher">Fresher</SelectItem>
+                        <SelectItem value="Experienced">Experienced</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+                </div>
+              </div>
+              <label className='w-1/2 flex flex-row max-w-[500px] md:w-full text-slate-500 pl-2 '>
+                    Enter Your Skills
+              </label>
+            <div className=" w-1/2 max-w-[500px] md:w-full flex flex-row">
               <Input 
               id="skills"
               value={skill}
               type="text" 
               placeholder="Enter your skills Eg. python" 
               onChange={(event)=>{setSkill(event.target.value)}} />
-              <button type="button" className="bg-blue-400 px-2 py-1 rounded-lg" onClick={addSkill}>
+              <button type="button" className="bg-blue-400 ml-2 px-2 py-1 rounded-lg" onClick={addSkill}>
                   add
               </button>
             </div>

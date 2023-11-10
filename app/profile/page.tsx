@@ -43,7 +43,7 @@ const page = () => {
   },[session])
   return (
     <div className={'min-h-screen py-[90px] flex '+inter.className}>
-      <div className='w-full flex flex-col justify-between items-center gap-10'>
+      <div className='w-full flex flex-col justify-start  items-center gap-10'>
         <div className='  rounded-md  flex flex-col justify-start items-center mx-10'>
           <div className='flex justify-center items-center m-5'>
               <h1 className='text-4xl font-semibold text-slate-800'>
@@ -62,9 +62,15 @@ const page = () => {
             </div>
           </div>
         </div>
-        {role && <div className='w-3/4'>
+        {role ? <div className='w-3/4'>
           <JobListCard jobs={jobs} setJobs={setJobs}  page='profile' role={role}/>
-        </div>}
+        </div> : <div>
+            <div className='flex justify-center items-center m-5'>
+                <h1 className='text-xl font-semibold text-slate-400'>
+                  Complete Your Profile
+                </h1>
+            </div>
+          </div>}
       </div>
     </div>
   )
