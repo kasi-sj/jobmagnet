@@ -83,13 +83,13 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
                         <Button variant="secondary" className="sm:px-3 shadow-none">
                             <Image alt={"company name"} src={data.companyDetails.image || logo} width={32} height={32} />
                         </Button>
-                        { data.matchCompany ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                        { data.matchCompany ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-green-200 text-green-600 rounded-sm ">
                             company matched   
                         </div> : <></>}
-                        { data.matchSpecialization ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                        { data.matchSpecialization ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-green-200 text-green-600 rounded-sm ">
                         Roll matched   
                         </div> : <></>}
-                        { data.matchskills ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-blue-200 text-blue-600 rounded-sm ">
+                        { data.matchskills ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-green-200 text-green-600 rounded-sm ">
                             {data.matchskills} skills matched   
                         </div> : <></>}
                     </div>
