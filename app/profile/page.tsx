@@ -52,11 +52,11 @@ const page = () => {
           </div>
           <div className='flex flex-col sm:flex-row justify-center items-center gap-7 p-6 rounded-lg'>
             
-            <Image alt="profile" src={image} width={150} height={150} className='rounded-full'/>
+            <Image alt="profile" src={image} width={150} height={150} className='rounded-full  border border-slate-950'/>
             <div className='h-full flex flex-col gap-3 sm:justify-evenly items-center '>
               <p className='font-medium'> {session?.user?.name }</p>
               <p className='font-normal text-slate-500'>Software Developer</p>
-              <button type='button' className='bg-blue-300 px-2 py-1 rounded-lg text-white' onClick={onEdit}>
+              <button type='button' className='border border-slate-800 border-dashed px-2 py-1 rounded-lg text-blue-600' onClick={onEdit}>
                 Edit Profile
               </button>
             </div>

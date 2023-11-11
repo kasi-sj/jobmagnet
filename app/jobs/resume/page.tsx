@@ -240,7 +240,7 @@ export default function Home() {
                   add
               </button>
             </div>
-            <div className="flex flex-wrap">
+            <div className=" w-1/2 min-w-[250px] max-w-[500px] md:w-full flex flex-wrap">
               { Array.from(skills).map((skill , index) => (
                   <div className=" bg-slate-300 border px-2 py-1 rounded-lg m-1 flex justify-center gap-1 items-center" key={index}>
                       {skill}

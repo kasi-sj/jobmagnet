@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
       },
     });
     const textContent = response1.data.body;
+    console.log(textContent)
     const prompt = textContent+"\n"+"This is an Text Content in a resume \n i need \n1.skills(array like [python,java,..]) \n2.address {country:'',state:'',city:''}\n3.contact {name : '' , email : '' , phone : ''}\n4.specialization eg (FullStack) (need all of this only) details \n return me a json stringified version don't add unnessacery data";
     const completion = await openai.completions.create({
       model: "text-davinci-003",
