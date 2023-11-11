@@ -22,6 +22,7 @@ const EmployerProfileForm = () => {
   const [webSite , setWebSite] = useState<string>("");
   const [startDate , setStartDate] = useState<string>("");
   const [submitting , setSubmitting] = useState<boolean>(false);
+  const [posted , setPosted] = useState<string[]>([]);
   const submit = () => {
     setSubmitting(true);
     const fun = async () => {
@@ -50,7 +51,7 @@ const EmployerProfileForm = () => {
         companyName : companyName,
         skills : [],
         applied : [],
-        posted : []
+        posted : posted
       }
       const res = await fetch("/api/setUser/", {
         method: "POST",
@@ -97,8 +98,9 @@ const EmployerProfileForm = () => {
         setCompanyUserName(data.companyUserName);
         setAbout(data.about);
         setWebSite(data.webSite);
-        setStartDate(data.startDate);
+        setStartDate(new Date(data.startDate).toLocaleDateString());
         setImg(data.image);
+        setPosted(data.posted);
       }
     };
     fun();

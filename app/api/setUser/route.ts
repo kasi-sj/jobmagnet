@@ -35,13 +35,13 @@ export const POST = async(req : any)=>{
             education,
             catagory,
             profession,
-            applied,
-            posted,
             companyName,
             companyUserName,
             about,
             webSite,
             startDate,
+            },{
+                upsert:true
             });
             console.log(res)
         return new Response(JSON.stringify(res));

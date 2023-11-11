@@ -26,6 +26,7 @@ const CandidateProfileForm = () => {
   const { data : session } = useSession();
   const [ photo , setPhoto] = useState<FileList | null>(null as any);
   const [submitting , setSubmitting] = useState<boolean>(false);
+  const [applied , setApplied] = useState<string[]>();
 
   const addSkill = (event : any) => {
     if(skill=="")return;
@@ -71,6 +72,7 @@ const CandidateProfileForm = () => {
         setUserName(data.candidateUserName);
         setSkills(data.skills);
         setImg(data.image);
+        setApplied(data.applied);
       }
     };
     fun();
