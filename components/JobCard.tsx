@@ -107,7 +107,7 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
                         </div>
                         <button type="button" onClick={FullDetail}>
                             <p className="text-blue-500 cursor-pointer">
-                                { type=="applied"  ?  "View Your Application" : type == "home" ? "View Details" : "View Applications"}
+                                { type=="applied"  ?  "View Your Application" : (type == "home" || type == "search") ? "View Details" : "View Applications"}
                             </p>
                        </button>
                     </div>
