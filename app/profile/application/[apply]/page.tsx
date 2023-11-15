@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
 
 const page = (route:any) => {
   const [data, setdate] : [data : any , setdata : any] = useState({});
@@ -30,7 +29,7 @@ const page = (route:any) => {
     fun()
   },[])
   return (
-    <div className={'flex justify-center '+inter.className}>
+    <div className={'flex justify-center '}>
       <div className='w-3/4 lg:w-full'>
         <Application data={data} type={"apply"} />
       </div>

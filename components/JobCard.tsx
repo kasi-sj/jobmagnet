@@ -32,7 +32,7 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
         router.push(`profile/posted/${data._id}`);
     }
     return (
-        <div className=" lg:w-[450px] flex flex-col items-center justify-center shadow-lg">
+        <div className=" lg:w-[450px] flex flex-col items-center justify-center shadow-lg cursor-pointer" onClick={FullDetail}>
             <Card className="w-full">
                 <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-2 space-y-0 sm:h-[225px]  w-full">
                     <div className="space-y-1">

@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
 const page = () => {
   const [jobs,setJobs] = React.useState([])
   const router = useRouter()
@@ -42,7 +41,7 @@ const page = () => {
     fun();
   },[session])
   return (
-    <div className={'min-h-screen py-[90px] flex '+inter.className}>
+    <div className={'min-h-screen py-[90px] flex '}>
       <div className='w-full flex flex-col justify-start  items-center gap-10'>
         <div className='  rounded-md  flex flex-col justify-start items-center mx-10'>
           <div className='flex justify-center items-center m-5'>

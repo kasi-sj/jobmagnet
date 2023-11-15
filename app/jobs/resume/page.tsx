@@ -9,8 +9,11 @@ import { Input  } from '@/components/ui/input';
 import { useSession } from 'next-auth/react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Spinner from '@/components/spinner';
-
-const inter = Inter({ subsets: ['latin'] })
+import { Poppins } from 'next/font/google'
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: '600'
+})
 export default function Home() {
   const {data:session} = useSession();
   const [company , setCompany] = useState<string>('');
@@ -25,6 +28,7 @@ export default function Home() {
   const [spin2 , setSpin2] = useState<boolean>(false);
   const [jobs,setJobs] = useState([])
 
+  
   const onSubmit = async (event : any) => {
     setSpin2(true);
     const obj = {
@@ -172,7 +176,13 @@ export default function Home() {
           <div className='w-3/4 flex flex-col '>
             
             <div className='w-full  font-semibold flex justify-center from-neutral-500 text-white md:px-10'>
-            <p className="text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text"  >Make your Dream Job Come True</p>
+            <p className={"text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-100  "} style={
+              // raleway.style
+              // roboto.style
+              // montserrat.style
+              // lato.style
+              poppins.style
+              }  >Make your Dream Job Come True</p>
             </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
@@ -259,7 +269,7 @@ export default function Home() {
               <Spinner className="ml-2" loading={spin2} />
             </div>
           </div>
-          <div className={ inter.className +" w-full"} >
+          <div className={" w-full"} >
             <JobListCard jobs={jobs}  setJobs={setJobs} page="search" role="search" />
           </div>
           </div>

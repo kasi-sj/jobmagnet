@@ -6,6 +6,8 @@ import twitter from './twitter.svg';
 import youtube from './youtube.svg';
 import jobimage2 from './jobimage2.jpeg'
 import background from './background.svg'
+import Pic1 from './pic1.jpg'
+import Pic2 from './pic2.jpg'
 export const logo = profile;
 export const jobImage1 = jobimage1;
 export const instagramIcon = instagram;
@@ -14,3 +16,5 @@ export const twitterIcon = twitter;
 export const youtubeIcon = youtube;
 export const jobImage2 = jobimage2;
 export const backgroundImg = background;
+export const pic1 = Pic1;
+export const pic2 = Pic2;

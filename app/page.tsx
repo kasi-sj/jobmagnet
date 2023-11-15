@@ -1,14 +1,38 @@
 'use client'
 import Image from 'next/image'
-import { jobImage1, jobImage2 } from '@/asset/image';
+import { pic1, pic2 } from '@/asset/image';
 import { Button } from '@/components/ui/button';
 import JobListCard from '@/components/JobListCard';
 import { useRouter } from 'next/navigation';
 import { getProviders, signIn, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: '100'
+})
+import { Montserrat } from 'next/font/google'
+const montserrat = Montserrat({
+  style   : 'italic',
+  subsets: ['latin'],
+  weight: '200'
+})
+import { Lato } from 'next/font/google'
+const lato = Lato({
+  subsets: ['latin'],
+  weight: '300'
+})
+import { Poppins } from 'next/font/google'
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: '600'
+})
+import { Raleway } from 'next/font/google';
+const raleway = Raleway({
+  subsets: ['latin'],
+  weight: '500'
+})
 import { toast, useToast } from "@/components/ui/use-toast"
-const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const [jobs,setJobs] = useState([])
   const {data : session } = useSession();
@@ -77,7 +101,13 @@ export default function Home() {
           <div className='w-3/4 flex flex-col '>
             
             <div className='w-full  font-semibold flex justify-center from-neutral-500 text-white md:px-10'>
-            <p className="text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-50 font-bold bg-clip-text"  >Make your Dream Job Come True</p>
+            <p className={"text-4xl sm:text-6xl sm:p-32 text-center mt-2 font-serif text-green-500 text-opacity-100  "} style={
+              // raleway.style
+              // roboto.style
+              // montserrat.style
+              // lato.style
+              poppins.style
+              }  >Make your Dream Job Come True</p>
             </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
@@ -96,10 +126,10 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <Image src={jobImage1} alt="jobImage1" className='rounded-lg  hidden lg:block' width={400} height={300} />
+            <Image src={pic1} alt="jobImage1" className='rounded-lg  hidden lg:block' width={300} height={200} />
           </div>
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
-            <Image src={jobImage2} alt="jobImage1" className='rounded-lg  hidden lg:block' width={400} height={300} />
+            <Image src={pic2} alt="jobImage1" className='rounded-lg  hidden lg:block' width={500} height={400} />
             <div className='flex flex-col gap-2'>
               <p className='text-2xl sm:text-4xl font-semibold text-center text-slate-600'>
                 Post Job
@@ -111,7 +141,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className={ inter.className +" w-full"} >
+          <div className={ " w-full"} >
             <JobListCard jobs={jobs} setJobs={setJobs} page="home" role="" />
           </div>
           </div>

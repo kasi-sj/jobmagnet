@@ -11,10 +11,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getProviders, signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react'
-import { Inter } from 'next/font/google'
 import { toast } from '@/components/ui/use-toast'
 import { decode } from 'punycode'
-const inter = Inter({ subsets: ['latin'] })
 
 
 const page = (route:any) => {
@@ -68,7 +66,7 @@ const page = (route:any) => {
     fun();
 },[])
   return (
-    <div className={'min-h-screen py-[90px] flex justify-center '+inter.className}>
+    <div className={'min-h-screen py-[90px] flex justify-center '}>
         <div className='w-3/4 max-lg:w-full m-2 '>
         <div className='flex justify-center items-center m-5'>
             <h1 className='text-4xl '>

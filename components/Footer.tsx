@@ -1,43 +1,49 @@
 import React from 'react'
 import { Separator } from '@/components/ui/separator'
-import { instagramIcon, linkedinIcon, twitterIcon, youtubeIcon } from '@/asset/image'
+import { instagramIcon, linkedinIcon, logo, twitterIcon, youtubeIcon } from '@/asset/image'
 import Image from 'next/image'
 import { Instagram, TwitterIcon } from 'lucide-react'
+import Link from 'next/link'
 const Footer = () => {
     return (
-        <footer className="flex flex-col gap-10 justify-center items-center  bg-gray-600 text-white py-10">
-            <div className="flex justify-between w-full px-3 gap-2 sm:px-10">
+        <>
+        <div className='w-full p-4'>
+            <Separator  className="h-[2px]" />
+        </div>
+        <footer className="flex justify-center items-center">
+            <div className='w-full lg:w-4/5 flex flex-col gap-10 justify-center items-center    py-10'>
+
+            <div className="flex justify-between w-full px-4 gap-2 ">
                 <div >
-                    <h3 className="sm:text-lg font-bold">About us</h3>
-                    <p className="mt-2 text-sm">We're hiring </p>
-                    <p className="mt-2 text-sm" >Hire interns for your company</p>
+                    <Link href="/">
+                    <div className='flex gap-1 items-center -ml-5'>                    
+                    <Image src={logo} alt="logo" width={45} height={45} />
+                    <h3 className="sm:text-lg font-bold">
+                    About us</h3>
+                    </div>
+                    </Link>
+                    <p className="mt-2 text-xs sm:text-sm">We're hiring </p>
+                    <p className="mt-2 text-xs sm:text-sm" >Hire interns for your company</p>
                 </div>
+
                 <div>
-                    <h3 className="sm:text-lg font-bold">Terms & Conditions</h3>
-                    <p className="mt-2 text-sm">Privacy </p>
-                    <p className="mt-2 text-sm" >Contact us</p>
+                    <p className="mt-2 text-sm sm:text-lg text-green-500">Connecting Talent to Opportunities – Your Success Starts Here! </p>
                 </div>
-                <div>
-                    <h3 className="sm:text-lg font-bold">Jobs</h3>
-                    <p className="mt-2 text-sm">Jobs by Category </p>
-                    <p className="mt-2 text-sm" >Jobs by Locations</p>
-                </div>
-            </div>
-            <div className='w-full p-2'>
-                <Separator  className="h-[1px]" />
             </div>
             <div className='w-full flex justify-between '>
                 <div className='flex gap-1 ml-3 sm:ml-10'>
-                    <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-5' alt='linkedin' /> 
-                    <Image src={instagramIcon} width={30} height={30}  className='max-sm:w-5' alt='linkedin' /> 
-                    <Image src={twitterIcon} width={30} height={30} className='max-sm:w-5'  alt='linkedin' /> 
-                    <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-5'  alt='linkedin' /> 
+                    <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
+                    <Image src={instagramIcon} width={30} height={30}  className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
+                    <Image src={twitterIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
+                    <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
                 </div>
-                <div className='mr-10 max-xs:w-[80px] max-sm:w-[100px]'>
+                <div className='mr-3 text-xs '>
                     © Copyright {new Date().getFullYear()} Job Magnet
                 </div>
             </div>
+            </div>
         </footer>
+        </>
     )
 }
 
