@@ -35,16 +35,16 @@ const Footer = () => {
                     © Copyright {new Date().getFullYear()} Job Magnet
                 </div>
                 <div className='flex gap-1 sm:gap-3 mx-2 '>
-                    <div className='border p-1 rounded-full border-slate-700'>
-                        <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
+                    <div className='border py-[6px] px-[6px]  rounded-full border-slate-700'>
+                        <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-6  w-10 cursor-pointer' alt='linkedin' /> 
                     </div>
-                    <div className='border p-1 rounded-full border-slate-700' >
+                    <div className='border px-[4px] py-[5px] rounded-full border-slate-700' >
                         <Image src={instagramIcon} width={30} height={30}  className=' max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
                     </div>
-                    <div className='border p-1 rounded-full border-slate-700' >
+                    <div className='border px-[4px] py-[5px] rounded-full border-slate-700' >
                         <Image src={twitterIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
                     </div>
-                    <div className='border p-1 rounded-full border-slate-700' >
+                    <div className='border px-[4px] py-[5px] rounded-full border-slate-700' >
                         <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
                     </div>
                 </div>

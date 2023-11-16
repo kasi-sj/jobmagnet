@@ -71,9 +71,9 @@ const NavBar = () => {
     fun();
   },[session])
   return (
-    <div className='w-full flex flex-col items-center '>
-    <div className=' bg-white h-[90px] w-3/4 max-md:w-screen flex items-center fixed'>
-      <div className= " flex justify-between  w-full items-center px-6"> 
+    <div className='w-full  bg-white bg-opacity-70  flex flex-col items-center z-10 '>
+    <div className='  h-[90px]  bg-white bg-opacity-70  w-3/4 max-md:w-screen flex items-center fixed'>
+      <div className= " flex  justify-between  w-full items-center px-6"> 
         <Link href="/">
         <div className='flex gap-1 m-1 items-center'>
           
@@ -82,14 +82,7 @@ const NavBar = () => {
           <p className=' max-sm:text-lg text-2xl  font-bold '>Job Magnet</p>
         </div>
         </Link>
-        {/* <div className='flex items-center justify-center px-10'>
-          <div className='border border-1 flex-grow mx-10 rounded-full   hidden lg:flex justify-start w-full sm:w-[300px] items-center px-2 h-10 '>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-            <input id="search" type="text" placeholder="Enter Company Name" className="ml-3   border-none w-full h-6 outline-none"  />
-          </div>
-        </div> */}
+
         <div className='gap-10 items-center hidden sm:flex'>
           { session?.user && <Link href="/profile">
           <div className='flex  justify-center items-center gap-2 m-1' >

@@ -32,11 +32,11 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
         router.push(`profile/posted/${data._id}`);
     }
     return (
-        <div className=" lg:w-[450px] flex flex-col items-center justify-center  cursor-pointer" onClick={FullDetail}>
+        <div className=" lg:w-[450px] shadow-lg rounded-lg flex flex-col items-center justify-center  cursor-pointer" onClick={FullDetail}>
             <Card className="w-full">
                 <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-2 space-y-0 sm:h-[225px]  w-full">
                     <div className="space-y-1">
-                        <div className="w-2/3   items-center mb-4">
+                        <div className="w-2/3 flex   items-center mb-4">
                                 { type=="applied" ? <div  className="flex  items-center  text-sm rounded-lg   shadow-none">
                                     {
                                         data.applied.status === "hired" ? <div className="flex  items-center  text-sm rounded-lg text-green-500">
@@ -47,7 +47,7 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
                                     }
                                 </div> :
                                 <div className="flex  items-center  text-sm rounded-lg bg-blue-200">
-                                    <div  className="w-full px-3 max-sm:text-xs max-sm:py-2 text-blue-600 shadow-none">
+                                    <div  className="w-full px-3 max-sm:text-xs max-sm:py-2 text-blue-600 shadow-none leading-6">
                                         {applied ?
                                         <div className="text-orange-600">
                                          Applied
