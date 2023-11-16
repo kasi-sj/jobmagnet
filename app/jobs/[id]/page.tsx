@@ -60,12 +60,22 @@ const page = (route:any) => {
         const job = id;
         router.push(`/jobs/${job}/apply`)
       }
-      else
-      toast({
-        variant: "destructive",
-        title: "Job Post",
-        description: "You are not allowed to apply job (must be an candidate)",
-      })
+      else{
+        if(user.companyUserName == ''){
+            toast({
+                variant: "destructive",
+                title: "Job Post",
+                description: "complete your profile first",
+                })
+        }else{
+            toast({
+                variant: "destructive",
+                title: "Job Post",
+                description: "You are not allowed to apply job (must be an candidate)",
+                })
+        }
+      }
+      
     }
   }
 useEffect(() => {
