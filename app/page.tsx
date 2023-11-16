@@ -121,7 +121,7 @@ export default function Home() {
           <div className='flex w-full justify-center md:justify-evenly md:px-10 my-10 items-center gap-10'>
             <div className='flex flex-col gap-2'>
               <p className="text-lg sm:text-2xl text-center text-slate-800 pb-1 ">
-                {count}+ Jobs Listed
+                {count} Jobs Listed
               </p>
               <p className='text-2xl sm:text-4xl font-semibold text-center text-slate-600'>
                 Find your Dream Job
