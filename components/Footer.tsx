@@ -30,15 +30,23 @@ const Footer = () => {
                     <p className="mt-2 text-sm sm:text-lg text-green-500">Connecting Talent to Opportunities – Your Success Starts Here! </p>
                 </div>
             </div>
-            <div className='w-full flex justify-between '>
-                <div className='flex gap-1 ml-3 sm:ml-10'>
-                    <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
-                    <Image src={instagramIcon} width={30} height={30}  className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
-                    <Image src={twitterIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
-                    <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
-                </div>
-                <div className='mr-3 text-xs '>
+            <div className='w-full flex justify-between items-center'>
+                <div className=' mx-2 text-xs '>
                     © Copyright {new Date().getFullYear()} Job Magnet
+                </div>
+                <div className='flex gap-1 sm:gap-3 mx-2 '>
+                    <div className='border p-1 rounded-full border-slate-700'>
+                        <Image src={linkedinIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
+                    </div>
+                    <div className='border p-1 rounded-full border-slate-700' >
+                        <Image src={instagramIcon} width={30} height={30}  className=' max-sm:w-6 w-10 cursor-pointer' alt='linkedin' /> 
+                    </div>
+                    <div className='border p-1 rounded-full border-slate-700' >
+                        <Image src={twitterIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
+                    </div>
+                    <div className='border p-1 rounded-full border-slate-700' >
+                        <Image src={youtubeIcon} width={30} height={30} className='max-sm:w-6 w-10 cursor-pointer'  alt='linkedin' /> 
+                    </div>
                 </div>
             </div>
             </div>

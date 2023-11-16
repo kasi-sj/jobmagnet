@@ -137,7 +137,7 @@ const JobListCard = ({page , role , jobs , setJobs}:any) => {
                             const post = posted.has(job._id);
                             const apply = applied.has(job._id);
                             return(
-                                <div className=' col-span-2  lg:col-span-1  rounded-lg flex justify-center'>
+                                <div className=' col-span-2  lg:col-span-1 shadow-lg rounded-lg flex justify-center'>
                                     <JobCard posted={post} applied={apply} data={job} type={type} />
                                 </div>
                             )
