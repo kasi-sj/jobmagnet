@@ -28,6 +28,7 @@ const page = () => {
   const [cans , setCans] = useState<string[]>([]);
   const [noOfOpening , setNoOfOpening] = useState<string>("");
   const [ description , setDescription] = useState<string>("");
+  const [company , setCompany] = useState<string>("");
   const addSkill = (event : any) => {
     if(skill=="")return;
     setSkills(prev => [...prev ,skill])
@@ -84,7 +85,9 @@ const page = () => {
               'Content-Type': 'application/json'
             }
         });
+        
         const data = await res.json();
+        setCompany(data.companyUserName);
         if(data&&!data.type){
             router.push('/profile/editProfile');
         }
@@ -100,7 +103,7 @@ const page = () => {
     <div className={'min-h-screen py-[70px] '}>
       <div className='flex  flex-col justify-center items-center m-5 gap-12'>
             <h1 className='text-4xl '>
-                Lavender company LTD
+                {company}
             </h1>
             <Card className='w-3/4'>
                 <CardHeader className="grid grid-cols-[1fr_110px] items-start gap-2 space-y-0 h-[100px] w-full">

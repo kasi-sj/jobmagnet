@@ -105,7 +105,6 @@ export default function Home() {
 
   return (
     <main className=" py-[90px] ">
-      
           <div className='flex items-center justify-center'>
           <div className='w-3/4 flex flex-col '>
             
