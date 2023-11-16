@@ -10,9 +10,11 @@ import { Input } from '@/components/ui/input'
 import React, { use, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { set } from 'mongoose'
 
 const page = () => {
   const router = useRouter();
+  const [submiting, setSubmiting] = useState(false);
   const { data : session } = useSession();
   const [ title , setTitle] = useState<string>("");
   const [ location , setLocation] = useState<string>("");
@@ -47,6 +49,7 @@ const page = () => {
   }
 
   const submit = async () => {
+    setSubmiting(true);
     const obj = {
 
         companyEmail : session?.user?.email,
@@ -68,6 +71,7 @@ const page = () => {
           'Content-Type': 'application/json'
         }
       });
+    setSubmiting(false);
     router.back();
   }
 
@@ -137,7 +141,7 @@ const page = () => {
                             </svg>
                             Job Description ?
                         </label>
-                        <textarea id='Description' value={description} onChange={e=>setDescription(e.target.value)}  className=' w-full md:w-1/2' placeholder='Eg. Software Engineer' />
+                        <textarea id='Description' rows={10} cols={20} value={description} onChange={e=>setDescription(e.target.value)}  className='border rounded-lg p-2 w-full md:w-1/2' placeholder='Eg. Software Engineer' />
                     </div>
                 </CardContent>
                 <CardContent>
@@ -259,7 +263,7 @@ const page = () => {
                     </div>
                 </CardContent>
                 <CardContent className='w-full flex justify-center items-center'>
-                        <button type='button' className='px-4 py-2 bg-green-500 text-white rounded-lg' onClick={submit}>
+                        <button type='button' className='px-4 py-2 bg-green-500 text-white rounded-lg' hidden={submiting} onClick={submit}>
                             Submit
                         </button>
                 </CardContent>

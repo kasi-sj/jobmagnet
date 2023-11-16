@@ -71,7 +71,7 @@ const NavBar = () => {
     fun();
   },[session])
   return (
-    <div className='w-full  bg-white bg-opacity-70  flex flex-col items-center z-10 '>
+    <div className='w-full  flex flex-col items-center z-10'>
     <div className='  h-[90px]  bg-white bg-opacity-70  w-3/4 max-md:w-screen flex items-center fixed'>
       <div className= " flex  justify-between  w-full items-center px-6"> 
         <Link href="/">

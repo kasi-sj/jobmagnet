@@ -49,7 +49,7 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
                                 <div className="flex  items-center  text-sm rounded-lg bg-blue-200">
                                     <div  className="w-full px-3 max-sm:text-xs max-sm:py-2 text-blue-600 shadow-none leading-6">
                                         {applied ?
-                                        <div className="text-orange-600">
+                                        <div className="text-green-600">
                                          Applied
                                         </div>
                                           : posted ? 
@@ -80,8 +80,8 @@ const JobCard = ({data , type , posted , applied}:{data : any , type : string , 
                         </CardDescription>
                     </div>
                     <div className="w-full flex flex-col items-end gap-2">
-                        <Button variant="secondary" className="sm:px-3 shadow-none">
-                            <Image alt={"company name"} src={data.companyDetails.image || logo} width={32} height={32} />
+                        <Button variant="secondary" className="sm:px-1  shadow-sm">
+                            <Image alt={"company logo"} src={data.companyDetails.image || logo} width={32} height={32} />
                         </Button>
                         { data.matchCompany ? <div className="flex leading-none   w-20 px-2 py-1  ml-2 text-sm bg-green-200 text-green-600 rounded-sm ">
                             company matched   
