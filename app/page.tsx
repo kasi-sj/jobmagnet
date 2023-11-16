@@ -83,14 +83,23 @@ export default function Home() {
         body: JSON.stringify({email}),
       })
       user = await user.json();
-      if(user.candidateUserName == '')
+      if(user.companyUserName != '')
       router.push("/jobPost");
-      else
-      toast({
-        variant: "destructive",
-        title: "Job Post",
-        description: "You are not allowed to post job (must be an employeer)",
-      })
+      else{
+        if(user.candidateUserName == ''){
+          toast({
+            variant: "destructive",
+            title: "Job Post",
+            description: "complete your profile first",
+          })
+        }else{
+          toast({
+            variant: "destructive",
+            title: "Job Post",
+            description: "You are not allowed to post job (must be an employeer)",
+          })
+        }
+      }
     }
   }
 
