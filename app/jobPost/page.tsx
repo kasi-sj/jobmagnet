@@ -266,7 +266,7 @@ const page = () => {
                     </div>
                 </CardContent>
                 <CardContent className='w-full flex justify-center items-center'>
-                        <button type='button' className='px-4 py-2 bg-green-500 text-white rounded-lg' hidden={submiting} onClick={submit}>
+                        <button type='button' className='px-4 py-2 bg-green-500 text-white rounded-lg' disabled={submiting} onClick={submit}>
                             Submit
                         </button>
                 </CardContent>
