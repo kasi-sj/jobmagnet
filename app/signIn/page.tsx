@@ -52,9 +52,9 @@ const page = () => {
     }
   return (
     <div className='py-[90px] min-h-screen flex justify-center items-center w-full'>
-    <div className='w-full md:w-1/2 ' >
+    <div className='w-full md:w-1/2 flex justify-center items-center' >
 
-    <Card >
+    <Card className='w-[500px]' >
         <CardHeader className="space-y-1">
             <CardTitle className="text-2xl">Login to your account</CardTitle>
             <CardDescription>
@@ -99,7 +99,7 @@ const page = () => {
         </CardContent>
         <CardFooter>
         <div className='flex flex-col justify-center items-center gap-5 w-full'>
-            <Button className="w-full px-4 py-2" onClick={onSubmit}>Log In</Button>
+            <Button className="w-full px-4 py-2 bg-green-600" onClick={onSubmit}>Log In</Button>
               <p>
                 new User ?  
                 <a href="/signUp" className="text-blue-500"> Sign Up</a>
