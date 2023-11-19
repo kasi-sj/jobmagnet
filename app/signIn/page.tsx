@@ -56,9 +56,9 @@ const page = () => {
 
     <Card >
         <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl">Create an account</CardTitle>
+            <CardTitle className="text-2xl">Login to your account</CardTitle>
             <CardDescription>
-            Enter your email below to create your account
+            Enter your email and password to LogIn
             </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
