@@ -1,39 +1,55 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+import GitHubProvider from 'next-auth/providers/github'
 import { connectTodDB } from '@/utils/database';
 import User from '@/models/user';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcrypt';
+
 
 const handler = NextAuth({
     providers : [
         GoogleProvider({
-            clientId : process.env.GOOGLE_ID,
-            clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        })
+            clientId : process.env.GOOGLE_ID ,
+            clientSecret : process.env.GOOGLE_CLIENT_SECRET ,
+        }),
+        GitHubProvider({
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET
+          }),
+        CredentialsProvider({
+            name: 'Credentials',
+            credentials: {
+                email: { label: 'email', type: 'text' },
+                password: { label: 'password', type: 'password' },
+              },
+            async authorize(credentials, req) {
+              await connectTodDB();
+              const sessionUser = await User.findOne({email:credentials.email});
+              const encryptedPassword = await bcrypt.hash(credentials.password, 10);
+              const result = await bcrypt.compare(credentials.password, encryptedPassword);
+                if(result)return sessionUser;
+                return null;
+            }
+          })
     ],
     callbacks:{
         async session({session}){
-            const sessionUser = await User.findOne({email:session.user.email});
-            session.user.id = sessionUser._id.toString()
+            var sessionUser = await User.findOne({email:session.user.email});
+
+            if(sessionUser == null){
+                sessionUser = await User.create({
+                    email : session.user.email,
+                    name : session.user.name.replace(" ","").toLowerCase(),
+                    image:session.user.picture || "",
+                    type : "",
+                })
+            }
+            session.user.id = sessionUser._id.toString();
+            session.user.name = sessionUser.name;
+            session.user.image = sessionUser.image;
             return session
         },
-        async signIn({profile }){
-            try{
-                await connectTodDB();
-                    if(!(await User.findOne({
-                        email : profile.email
-                    }))){
-                        await User.create({
-                            email : profile.email,
-                            name : profile.name.replace(" ","").toLowerCase(),
-                            image:profile.picture || "https://res.cloudinary.com/dq7l8216n/image/upload/v1622711879/nextjs-mongodb-cloudinary/placeholder-image.jpg",
-                            type : "",
-                        })
-                    }
-                    return true;
-            }catch(e){
-                console.log(e)
-            }
-        }
     }
 })
 

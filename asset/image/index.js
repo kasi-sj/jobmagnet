@@ -4,6 +4,8 @@ import instagram from './instagram.svg';
 import linkedin from './linkedIn.svg';
 import twitter from './twitter.svg';
 import youtube from './youtube.svg';
+import google from './google.png'
+import github from './github.png'
 import jobimage2 from './jobimage2.jpeg'
 import background from './background.svg'
 import Pic1 from './pic1.jpg'
@@ -18,3 +20,5 @@ export const jobImage2 = jobimage2;
 export const backgroundImg = background;
 export const pic1 = Pic1;
 export const pic2 = Pic2;
+export const googleIcon = google;
+export const githubIcon = github;

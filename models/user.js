@@ -60,7 +60,10 @@ const UserSchema = new Schema({
     },
     hired : {
         type : Number,
-    }
+    },
+    hashedpassword : {
+        type : String,
+    },
 });
 
 const User = models.User ||  model("User" , UserSchema);
