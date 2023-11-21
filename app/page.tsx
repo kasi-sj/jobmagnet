@@ -4,33 +4,12 @@ import { pic1, pic2 } from '@/asset/image';
 import { Button } from '@/components/ui/button';
 import JobListCard from '@/components/JobListCard';
 import { useRouter } from 'next/navigation';
-import { getProviders, signIn, useSession } from 'next-auth/react';
+import {  signIn, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { Roboto } from 'next/font/google'
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: '100'
-})
-import { Montserrat } from 'next/font/google'
-const montserrat = Montserrat({
-  style   : 'italic',
-  subsets: ['latin'],
-  weight: '200'
-})
-import { Lato } from 'next/font/google'
-const lato = Lato({
-  subsets: ['latin'],
-  weight: '300'
-})
 import { Poppins } from 'next/font/google'
 const poppins = Poppins({
   subsets: ['latin'],
   weight: '600'
-})
-import { Raleway } from 'next/font/google';
-const raleway = Raleway({
-  subsets: ['latin'],
-  weight: '500'
 })
 import { toast, useToast } from "@/components/ui/use-toast"
 export default function Home() {
@@ -41,10 +20,7 @@ export default function Home() {
   const [count , setCount] = useState(0);
 
   useEffect(() => {
-    const getProvidersData = async () => {
-      const providersData : any= await getProviders();
-      setProviders(providersData);
-    }
+    
     const getJobsCount = async () => {
       const res = await fetch('/api/noOfJob', {
         method: 'POST',
@@ -58,7 +34,6 @@ export default function Home() {
       setCount(data.count);
     }
     getJobsCount();
-    getProvidersData();
   }, [])
 
   const onResume = async () => {

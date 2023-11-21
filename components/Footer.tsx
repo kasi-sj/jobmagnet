@@ -2,7 +2,6 @@ import React from 'react'
 import { Separator } from '@/components/ui/separator'
 import { instagramIcon, linkedinIcon, logo, twitterIcon, youtubeIcon } from '@/asset/image'
 import Image from 'next/image'
-import { Instagram, TwitterIcon } from 'lucide-react'
 import Link from 'next/link'
 const Footer = () => {
     return (

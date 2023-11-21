@@ -5,7 +5,6 @@ import { Label } from './ui/label'
 import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 import { useUploadThing } from '@/lib/hooks/uploadthings'
-import { set } from 'mongoose'
 import { useSession } from 'next-auth/react'
 
 const EmployerProfileForm = () => {

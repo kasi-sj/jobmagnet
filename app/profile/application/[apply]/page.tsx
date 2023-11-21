@@ -1,10 +1,8 @@
 'use client'
 import Application from '@/components/Application';
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import { Inter } from 'next/font/google'
 
 const page = (route:any) => {
   const [data, setdate] : [data : any , setdata : any] = useState({});

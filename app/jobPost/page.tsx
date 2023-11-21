@@ -7,10 +7,9 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
-import React, { use, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { set } from 'mongoose'
 
 const page = () => {
   const router = useRouter();

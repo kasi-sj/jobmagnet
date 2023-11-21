@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/react';
 import React from 'react'
 
 const Application = ({data , type}:{data:any , type : string}) => {

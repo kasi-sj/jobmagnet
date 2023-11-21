@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Place, Money } from "@/components/SmallComponents"    
-import { useState } from "react"
 
 const JobCard = ({data , type , posted , applied}:{data : any , type : string , posted : boolean , applied : boolean}) => {
     const router = useRouter();

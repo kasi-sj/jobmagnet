@@ -12,7 +12,6 @@ import {Input } from '@/components/ui/input'
 import { githubIcon , googleIcon } from '@/asset/image'
 import Image from 'next/image'
 import { getProviders, signIn, useSession } from 'next-auth/react'
-import User from '@/models/user'
 import { useRouter } from 'next/navigation'
 import { toast } from '@/components/ui/use-toast'
 const page = () => {
@@ -71,7 +70,7 @@ const page = () => {
 
   return (
     <div className='py-[90px] min-h-screen flex justify-center items-center w-full'>
-    <div className='w-full md:w-1/2 flex justify-center items-center' >
+    <div className='w-full md:w-1/2 flex justify-center items-center p-5' >
 
     <Card className='w-[500px]' >
         <CardHeader className="space-y-1">

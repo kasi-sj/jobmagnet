@@ -1,18 +1,13 @@
 'use client'
 import { logo } from '@/asset/image'
-import { Money, Place } from '@/components/SmallComponents'
+import {  Place } from '@/components/SmallComponents'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 import {Separator} from '@/components/ui/separator'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { getProviders, signIn } from 'next-auth/react';
-import { useSession } from 'next-auth/react'
-import { toast } from '@/components/ui/use-toast'
-import { decode } from 'punycode'
 
 
 const page = (route:any) => {

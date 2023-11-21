@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import JobCard from './JobCard'
 import { useSession } from 'next-auth/react';
-import { set } from 'mongoose';
 
 const JobListCard = ({page , role , jobs , setJobs}:any) => {
   const {data : session} = useSession();

@@ -14,11 +14,9 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useRouter } from "next/navigation"
 import CandidateProfileForm from "./CandidateProfileForm"
 import EmployerProfileForm from "./EmployerProfileForm"
 import { useSession } from "next-auth/react"
@@ -26,7 +24,6 @@ import { useSession } from "next-auth/react"
 
 
 export default function EditProfile() {
-  const router = useRouter();
   const [already , setAlready] = useState<boolean>(false);
   const { data: session } = useSession(); 
   const [role , setRole] = useState<string>("") 

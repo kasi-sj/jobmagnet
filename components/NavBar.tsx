@@ -3,10 +3,8 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { logo } from '@/asset/image/index'
 import Link from 'next/link'
-import { Input } from './ui/input'
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import {  signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Avatar } from './ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,34 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-function Providers() {
-  const [providers, setProviders] = useState(null);
-  
-  useEffect(() => {
-    const getProvidersData = async () => {
-      const providersData : any= await getProviders();
-      setProviders(providersData);
-    }
-    getProvidersData();
-  }, [])
-
-  return (
-    <>
-      {providers && 
-      Object.values(providers).map((provider : any)=> (
-        <button type="button" onClick={()=>signIn(provider.id)}>
-            <div className='flex gap-1 m-1'>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" className="stroke-current text-black stroke-1.5" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 12l-3-3m0 0l3-3m-3 3h-9" className="stroke-current text-black stroke-1.5" />
-              </svg>
-              <p className="text-black" > LogIn </p>
-            </div>
-          </button>
-      ))}
-    </>
-  )
-}
 
 const NavBar = () => {
   const router = useRouter();
@@ -185,7 +155,7 @@ const NavBar = () => {
                     </div>
                   </button> : (
                     <button type="button" onClick={onSignUp}>
-                    <div className='flex gap-1 m-1'>
+                    <div className='flex gap-4 m-1'>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15" className="stroke-current text-black stroke-1.5" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M18.75 12l-3-3m0 0l3-3m-3 3h-9" className="stroke-current text-black stroke-1.5" />

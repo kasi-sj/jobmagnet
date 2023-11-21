@@ -1,9 +1,6 @@
 'use client'
 import  Candidates  from '@/components/Candidates'
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import { Inter } from 'next/font/google'
 const page = (route:any) => {
   const [data, setData] : [data : any , setdata : any] = useState([]);
   const [job , setJob] : [job : any , setJob : any] = useState({});

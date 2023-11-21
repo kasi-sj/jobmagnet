@@ -1,6 +1,6 @@
 'use client'
 import { logo } from '@/asset/image'
-import { Money, Place } from '@/components/SmallComponents'
+import {  Place } from '@/components/SmallComponents'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
@@ -9,7 +9,6 @@ import {Separator} from '@/components/ui/separator'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { getProviders, signIn } from 'next-auth/react';
 import { useSession } from 'next-auth/react'
 import { toast } from '@/components/ui/use-toast'
 
@@ -33,18 +32,13 @@ const page = (route:any) => {
   const [numberOfOpening , setNumberOfOpening] = useState("");
   const [about , setAbout] = useState("");
   const [opportunities , setOpportunities] = useState(0);
-  const [providers, setProviders] = useState();
   const onApply = () => {
     ApplyJob();
   }
   const ApplyJob = async () => {
     console.log("aegsghdsfghdfh")
     if(!(session?.user)){
-      if(!providers) return;
-      
-      Object.values(providers).map((provider : any)=>{
-        signIn(provider.id)
-      })
+      router.push('/signIn');
     }
     if(session?.user){
       const email = session?.user?.email;
@@ -79,10 +73,6 @@ const page = (route:any) => {
     }
   }
 useEffect(() => {
-    const getProvidersData = async () => {
-        const providersData : any= await getProviders();
-        setProviders(providersData);
-    }
     const fun = async () => {
         if (id) {
             console.log(id);
@@ -110,7 +100,6 @@ useEffect(() => {
             console.log(about);
         }
     }
-    getProvidersData();
     fun();
 },[])
   return (

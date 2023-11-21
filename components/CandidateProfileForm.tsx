@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { CardContent, CardFooter } from './ui/card'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
@@ -7,8 +7,6 @@ import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 import { useUploadThing } from '@/lib/hooks/uploadthings'
 import { useSession } from 'next-auth/react'
-import { set } from 'mongoose'
-
 const CandidateProfileForm = () => {
   
   const router = useRouter();
