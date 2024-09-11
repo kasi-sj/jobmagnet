@@ -29,6 +29,7 @@
     "cmdk": "^0.2.0",
     "convertapi": "^1.13.0",
     "encoding": "^0.1.13",
+    "jobmagnet": "file:",
     "lucide-react": "^0.287.0",
     "mongodb": "^6.1.0",
     "mongoose": "^7.6.2",
