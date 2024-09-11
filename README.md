@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" id="title">Job Magnet</h1>
 
-## Getting Started
+<p id="description">Developed a Job Searching platform featuring job posting, searching, applying, and efficient job
+notifications via nodemailer. Implemented secure user authentication, responsive design, and profile
+management.</p>
 
-First, run the development server:
+<h2>📱 ScreenShots</h2>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Screenshot 2024-07-17 182144](https://github.com/user-attachments/assets/78527925-1ae4-4b8d-a0cb-123aaceb8f4f)
+![Screenshot 2024-07-17 182119](https://github.com/user-attachments/assets/e15eb202-de1e-4917-bed0-e241d7b560c1)
+![Screenshot 2024-07-17 182046](https://github.com/user-attachments/assets/1596aa22-5043-4126-bb2b-b72d87652f25)
+![Screenshot 2024-07-17 182029](https://github.com/user-attachments/assets/2dd29858-0141-4124-8725-dc1df037173e)
+
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   Job Posting: Employers can post job openings with detailed descriptions.
+*   Job Searching: Users can search for jobs using various filters and keywords.
+*   Job Applications: Seamless application process for job seekers.
+*   Job Notifications: Efficient job notifications via Nodemailer to keep users informed.
+*   User Authentication: Secure login and registration using NextAuth.js.
+*   Responsive Design: Fully responsive layout to ensure a great user experience on all devices.
+*   Profile Management: Users can create and manage their profiles, including uploading resumes and cover letters.
+*   PDF Generation: Utilize PDF.co API for generating and handling PDFs.
+*   AI Integration: Integration with Chat GPT API for enhanced user interactions.
+*   File Upload: Upload and manage files using UploadThing.
+<h2> Live Demo </h2>
+
+## 🌐 Live Demo
+
+- [Job-Magnet-Website](https://jobmagnet.vercel.app/).
+
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Clone the repository</p>
+
+```
+https://github.com/kasi-sj/jobmagnet/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>2. Navigate to the project directory</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd jobmagnet
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<p>3. Install dependencies</p>
 
-## Learn More
+```
+npm i
+```
 
-To learn more about Next.js, take a look at the following resources:
+<p>4. Add ENV</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXTAUTH_URL=
+NEXTAUTH_URL_INTERNAL=
+NEXTAUTH_SECRET=
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+PDFTOTEXT=
+CHATGPT_API=
+GOOGLE_ID=
+GOOGLE_CLIENT_SECRET=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<p>5. Start the development server</p>
 
-## Deploy on Vercel
+```
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  
+  
+<h2>💻 Built with</h2>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Technologies used in the project:
+
+*   Next.js: Framework for building server-rendered React applications.
+*   MongoDB: NoSQL database for storing user and job data.
+*   Tailwind CSS: Utility-first CSS framework for styling the application.
+*   PDF.co API: API for generating and handling PDFs.
+*   Chat GPT API: API for integrating AI-driven features.
+*   UploadThing: Service for managing file uploads.
+*   NextAuth.js: Library for authentication in Next.js applications.
+
+<h2>💖Like my work?</h2>
+
+
+
+Give this repo a star ⭐
